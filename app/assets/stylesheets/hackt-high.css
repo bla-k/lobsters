@@ -12,9 +12,9 @@
 	--neon-green: 0 255 136;
 	--neon-cyan: 0 212 255;
 	--neon-magenta: 255 0 170;
+	--cloud: 160 160 160;
+	--stone: 136 136 136;
 	--ultraviolet: 168 85 247;
-
-	--rgb-ultraviolet: var(--ultraviolet);
 
 	/* monochrome */
 	--base-bg: var(--deep-purple);
@@ -66,11 +66,11 @@
 	--color-table-row-bg-odd: #222;
 	--color-table-row-border: #333;
 
-	--color-tag-bg: rgb(var(--rgb-ultraviolet) / var(--opacity-gradient-dim));
-	--color-tag-bg-hover: rgb(var(--rgb-ultraviolet) / var(--opacity-gradient-lit));
-	--color-tag-bg-shadow: rgb(var(--rgb-ultraviolet) / var(--opacity-gradient-mid));
-	--color-tag-border: rgb(var(--rgb-ultraviolet) / var(--opacity-gradient-mid));
-	--color-tag-fg: rgb(var(--rgb-ultraviolet));
+	--color-tag-bg: rgb(var(--ultraviolet) / var(--opacity-gradient-dim));
+	--color-tag-bg-hover: rgb(var(--ultraviolet) / var(--opacity-gradient-lit));
+	--color-tag-bg-shadow: rgb(var(--ultraviolet) / var(--opacity-gradient-mid));
+	--color-tag-border: rgb(var(--ultraviolet) / var(--opacity-gradient-mid));
+	--color-tag-fg: rgb(var(--ultraviolet));
 	--color-tag-media-bg: #1a3d66;
 	--color-tag-media-border: #264d80;
 	--color-tag-meta-bg: #333;
