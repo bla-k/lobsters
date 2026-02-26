@@ -14,6 +14,8 @@
 	--neon-magenta: 255 0 170;
 	--ultraviolet: 168 85 247;
 
+	--rgb-ultraviolet: var(--ultraviolet);
+
 	/* monochrome */
 	--base-bg: var(--deep-purple);
 	--base-fg: 255 255 255;
@@ -26,7 +28,9 @@
 	--opacity-fg-contrast-5: 96%;
 	--opacity-fg-contrast-4-5: 95%;
 
-	--opacity-gradient-lit: 20%;
+	--opacity-gradient-lit: 30%;
+	--opacity-gradient-mid: 20%;
+	--opacity-gradient-dim: 15%;
 	--opacity-gradient-shadowed: 5%;
 
 	--opacity-shadow-80: 80%;
@@ -62,8 +66,11 @@
 	--color-table-row-bg-odd: #222;
 	--color-table-row-border: #333;
 
-	--color-tag-bg: #4d4000;
-	--color-tag-border: #806600;
+	--color-tag-bg: rgb(var(--rgb-ultraviolet) / var(--opacity-gradient-dim));
+	--color-tag-bg-hover: rgb(var(--rgb-ultraviolet) / var(--opacity-gradient-lit));
+	--color-tag-bg-shadow: rgb(var(--rgb-ultraviolet) / var(--opacity-gradient-mid));
+	--color-tag-border: rgb(var(--rgb-ultraviolet) / var(--opacity-gradient-mid));
+	--color-tag-fg: rgb(var(--rgb-ultraviolet));
 	--color-tag-media-bg: #1a3d66;
 	--color-tag-media-border: #264d80;
 	--color-tag-meta-bg: #333;
