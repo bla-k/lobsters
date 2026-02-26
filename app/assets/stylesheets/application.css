@@ -9,9 +9,6 @@ But I make an unprincipled exception for :has because it solves so many big prob
 
 :root {
 	/* common color scheme */
-	--font-size-default: 1rem;
-	--font-size-tags: 0.66rem;
-
 	--color-bg: rgb(var(--base-bg));
 	--color-bg-50: rgb(var(--base-bg) / 50%);
 
@@ -38,6 +35,11 @@ But I make an unprincipled exception for :has because it solves so many big prob
 	/* dimensions */
 	--comment-controls-height: 1.2lh;
 	--input-outline-width: 2px;
+
+	--font-family: var(--font-hackt);
+	--font-family-mono: var(--font-hackt-mono);
+	--font-size-default: 1rem;
+	--font-size-tags: 0.66rem;
 }
 
 /* generics */
@@ -54,7 +56,7 @@ html {
 }
 
 body, textarea, input, button {
-	font-family: var(--font-hackt);
+	font-family: var(--font-family);
 	color: var(--color-fg);
 	line-height: 1.45em;
 }
