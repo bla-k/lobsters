@@ -39,6 +39,7 @@ But I make an unprincipled exception for :has because it solves so many big prob
 	--font-family: var(--font-hackt);
 	--font-family-mono: var(--font-hackt-mono);
 	--font-size-default: 1rem;
+	--font-size-domain: 0.75rem;
 	--font-size-tags: 0.66rem;
 }
 
@@ -626,6 +627,7 @@ li .tags {
 
 li .domain {
 	color: var(--color-fg-contrast-4-5);
+	font-size: var(--font-size-domain);
 	font-style: italic;
 	text-decoration: none;
 	vertical-align: middle;
