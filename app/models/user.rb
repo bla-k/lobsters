@@ -106,7 +106,7 @@ class User < ApplicationRecord
     s.string :homepage
   end
 
-  validates :prefers_color_scheme, inclusion: %w[system light dark]
+  validates :prefers_color_scheme, inclusion: %w[hackt system light dark]
   validates :prefers_contrast, inclusion: %w[system normal high]
 
   validates :username, uniqueness: {case_sensitive: false}
