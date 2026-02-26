@@ -22,17 +22,14 @@ RUN gem install bundler
 # Copy Gemfile and Gemfile.lock
 COPY Gemfile Gemfile.lock .ruby-version ./
 
-# Copy bin/setup
-COPY bin/setup ./bin/
-
-# Copy database configuration
-COPY config/database.yml.sample ./config/
-
-# Setup the application
-RUN bin/setup
+# Install gems (but don't run db setup — MariaDB isn't available at build time)
+RUN bundle install
 
 # Expose port for Rails server
 EXPOSE 3000
 
-# Command to start the Rails server
+# Entrypoint: wait for DB, set up if needed, then start Rails
+COPY docker-entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
