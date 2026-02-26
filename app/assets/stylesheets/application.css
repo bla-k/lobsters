@@ -40,6 +40,7 @@ But I make an unprincipled exception for :has because it solves so many big prob
 	--font-family-mono: var(--font-hackt-mono);
 	--font-size-default: 1rem;
 	--font-size-domain: 0.75rem;
+	--font-size-byline: 0.80rem;
 	--font-size-tags: 0.66rem;
 }
 
@@ -71,6 +72,11 @@ body {
 a {
 	color: var(--color-fg-link);
 	cursor: pointer;
+}
+
+a:hover {
+	color: var(--color-fg-link-hover);
+	text-shadow: 0 0 8px var(--color-fg-link-shadow);
 }
 
 li.story div.details span.link a:visited {
@@ -226,7 +232,6 @@ input[type="submit"].link_post {
 }
 .byline input[type="submit"].link_post {
 	color: var(--color-fg-contrast-4-5);
-	text-decoration: none;
 }
 
 input[type="submit"]:focus,
@@ -513,14 +518,15 @@ div.voters {
 
 .upvoter:before {
 	content: "\25b3";
-	font-size: 1.2rem;
-	font-family: system-ui, monospace, sans-serif;
+	font-size: 1.35rem;
+	color: rgb(var(--neon-magenta));
 }
 .upvoter:hover:before,
 .upvoted .upvoter:before {
 	content: "\25b2";
-	color: var(--color-fg-accent);
-	-webkit-text-stroke: 1px var(--color-fg-accent);
+	color: rgb(var(--neon-magenta));
+	font-size: 1.35rem;
+	-webkit-text-stroke: 1px rgb(var(--neon-magenta));
 }
 .upvoter {
 	color: var(--color-fg-contrast-4-5);
@@ -529,12 +535,14 @@ div.voters {
 	align-items: center;
 	justify-self: center;
 	text-decoration: none;
+	font-size: 0.9rem;
 }
 .upvoter:focus { outline: none; } /* don't outline after upvote click */
 .upvoter:focus-visible { outline: 2px solid var(--color-fg-link); } /* do outline when tabbing */
 
 li.story {
 	clear: both;
+	font-family: var(--font-family-mono);
 }
 ol.stories li.story div.story_liner {
 	padding-top: 0.25em;
@@ -626,7 +634,6 @@ li .tags {
 }
 
 li .domain {
-	color: var(--color-fg-contrast-4-5);
 	font-size: var(--font-size-domain);
 	font-style: italic;
 	text-decoration: none;
@@ -695,7 +702,8 @@ li.comments_subtree {
 	margin-left: calc(-4px + 1.5em + 30px);
 }
 li .byline {
-	color: var(--color-fg-contrast-4-5);
+	color: var(--color-byline-fg);
+	font-size: var(--font-size-byline);
 }
 li .byline > img.avatar {
 	margin-bottom: -5px;
@@ -711,9 +719,18 @@ img.avatar {
 li.story .byline {
 	margin-top: 1px;
 }
-.byline a {
-	color: var(--color-fg-contrast-4-5);
+
+.byline a,
+.byline input[type="submit"],
+.byline label {
+	color: inherit;
 	text-decoration: none;
+}
+.byline a:hover,
+.byline input[type="submit"]:hover,
+.byline label:hover {
+	color: var(--color-byline-fg-hover);
+	text-shadow: none;
 }
 .comment.replied .flagger,
 .comment.flagged .comment_replier {
@@ -753,6 +770,16 @@ span.you_invited {
 
 li .byline form {
 	display: inline-block;
+}
+
+li .byline .u-author,
+li .byline .comments_label > a {
+	color: rgb(var(--neon-green));
+}
+li .byline .u-author:hover,
+li .byline .comments_label > a:hover {
+	color: rgb(var(--ultraviolet));
+	text-shadow: 0 0 8px var(--color-fg-link-shadow);
 }
 
 .last_read_newest {
