@@ -1,0 +1,73 @@
+/* hackt font declarations */
+
+@font-face {
+	font-family: "JetBrains Mono";
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url("JetBrainsMono-Regular.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "JetBrains Mono";
+	font-style: italic;
+	font-weight: 400;
+	font-display: swap;
+	src: url("JetBrainsMono-Italic.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "JetBrains Mono";
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+	src: url("JetBrainsMono-Bold.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "JetBrains Mono";
+	font-style: italic;
+	font-weight: 700;
+	font-display: swap;
+	src: url("JetBrainsMono-BoldItalic.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "Space Grotesk";
+	font-style: normal;
+	font-weight: 300;
+	font-display: swap;
+	src: url("space-grotesk-v22-latin_latin-ext-300.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "Space Grotesk";
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url("space-grotesk-v22-latin_latin-ext-regular.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "Space Grotesk";
+	font-style: normal;
+	font-weight: 500;
+	font-display: swap;
+	src: url("space-grotesk-v22-latin_latin-ext-500.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "Space Grotesk";
+	font-style: normal;
+	font-weight: 600;
+	font-display: swap;
+	src: url("space-grotesk-v22-latin_latin-ext-600.woff2") format("woff2");
+}
+
+@font-face {
+	font-family: "Space Grotesk";
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+	src: url("space-grotesk-v22-latin_latin-ext-700.woff2") format("woff2");
+}

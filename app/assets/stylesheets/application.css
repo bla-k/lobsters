@@ -54,7 +54,7 @@ html {
 }
 
 body, textarea, input, button {
-	font-family: "helvetica neue", arial, sans-serif;
+	font-family: var(--font-hackt);
 	color: var(--color-fg);
 	line-height: 1.45em;
 }
