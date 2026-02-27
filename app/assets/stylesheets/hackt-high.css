@@ -74,6 +74,8 @@
 	--color-byline-fg: rgb(var(--stone));
 	--color-byline-fg-hover: rgb(var(--cloud));
 
+	--color-hint-fg: rgb(var(--stone));
+
 	--color-table-header-bg: #333;
 	--color-table-header-border: #555;
 	--color-table-row-bg-even: #111;
@@ -117,7 +119,12 @@ body, textarea, input, button {
 	font-family: var(--font-family-sans);
 }
 
-a:hover {
+footer a {
+	color: var(--color-fg-link);
+}
+
+a:hover,
+footer a:hover {
 	color: var(--color-fg-link-hover);
 	text-shadow: 0 0 8px var(--color-fg-link-shadow);
 }
@@ -187,4 +194,9 @@ li .byline {
 .byline .comments_label > a:hover {
 	color: var(--color-fg-link-hover);
 	text-shadow: 0 0 8px var(--color-fg-link-shadow);
+}
+
+.hint {
+	color: var(--color-hint-fg);
+	font-size: var(--font-size-medium);
 }
