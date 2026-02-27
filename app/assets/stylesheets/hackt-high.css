@@ -56,7 +56,7 @@
 	--color-fg-link-hover: rgb(var(--ultraviolet));
 	--color-fg-link-shadow: rgb(var(--ultraviolet) / var(--opacity-shadow-5));
 	--color-fg-link-visited: rgb(130 160 255);
-	--color-fg-accent: rgb(255 70 70); /* red as in lobste.rs */
+	--color-fg-accent: rgb(var(--ultraviolet));
 	--color-fg-negative: rgb(255 60 60); /* red as in warning */
 	--color-fg-affirmative: rgb(60 200 60);
 	--color-fg-author: rgb(var(--neon-magenta));
@@ -119,11 +119,15 @@ body, textarea, input, button {
 	font-family: var(--font-family-sans);
 }
 
+header#nav a,
+header#subnav a,
 footer a {
 	color: var(--color-fg-link);
 }
 
 a:hover,
+header#nav a:hover,
+header#subnav a:hover,
 footer a:hover {
 	color: var(--color-fg-link-hover);
 	text-shadow: 0 0 8px var(--color-fg-link-shadow);
