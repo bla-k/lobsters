@@ -309,6 +309,7 @@ li .byline {
 	color: var(--color-byline-fg-hover);
 }
 
+/* FIXME this selector turns REPLY in green in comments view via direct link */
 /* FIXME merge with default .byline */
 /* matches author in comment's 'by line' */
 .comment .details .byline > a:last-of-type,
@@ -350,4 +351,9 @@ li .comment_folder:before {
 
 li .comment_folder_button:checked ~ .comment .comment_folder:before {
 	content: "\22A0";
+}
+
+.comment.replied .flagger,
+.comment.flagged .comment_replier {
+	color: var(--color-byline-fg);
 }
