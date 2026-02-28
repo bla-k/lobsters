@@ -24,6 +24,13 @@
 	--stone: 136 136 136;
 	--ultraviolet: 168 85 247;
 
+	/* neon-green / 20 + deep-purple */
+	--deep-green-20: 24 76 64;
+	--deep-green-30: 21 98 73;
+	--deep-green-60: 12 165 100;
+	--deep-violet-60: 113 63 166;
+	--deep-violet-80: 140 74 206;
+
 	/* monochrome */
 	--base-bg: var(--deep-purple);
 	--base-fg: 255 255 255;
@@ -55,11 +62,11 @@
 	--color-fg-link: rgb(var(--neon-green));
 	--color-fg-link-hover: rgb(var(--ultraviolet));
 	--color-fg-link-shadow: rgb(var(--ultraviolet) / var(--opacity-shadow-5));
-	--color-fg-link-visited: rgb(130 160 255);
+	--color-fg-link-visited: rgb(var(--deep-green-60));
 	--color-fg-accent: rgb(var(--ultraviolet));
 	--color-fg-negative: rgb(255 60 60); /* red as in warning */
 	--color-fg-affirmative: rgb(var(--neon-cyan)); /* ie. save/unsave */
-	--color-fg-author: rgb(var(--neon-magenta));
+	--color-fg-author: rgb(var(--neon-green));
 	--color-fg-shape: rgb(120 120 120);
 
 	/* elements */
@@ -160,6 +167,19 @@ a.tag:hover {
 li.story,
 li.story input {
 	font-family: var(--font-family-mono);
+}
+
+li.story.saved .saver .btn-link {
+	color: inherit;
+	font-weight: 700;
+}
+
+li.story.saved .saver .btn-link:hover {
+	color: var(--color-byline-fg-hover);
+}
+
+li.story div.details span.link a:visited:hover {
+	color: rgb(var(--deep-violet-80));
 }
 
 li .domain {
