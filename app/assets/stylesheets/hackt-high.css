@@ -15,12 +15,18 @@
 	--font-size-medium: 0.80rem;
 	--font-size-small: 0.66rem;
 
+	/* dimensions */
+	--input-outline-width: 1px;
+
 	/* palette */
 	--deep-purple: 31 32 46;
+	--dark-purple: 37 38 54;
+	--mid-purple: 53 54 71;
 	--neon-green: 0 255 136;
 	--neon-cyan: 0 212 255;
 	--neon-magenta: 255 0 170;
 	--cloud: 160 160 160;
+	--tooth: 224 224 224;
 	--stone: 136 136 136;
 	--ultraviolet: 168 85 247;
 
@@ -67,21 +73,24 @@
 	--color-fg-negative: rgb(255 60 60); /* red as in warning */
 	--color-fg-affirmative: rgb(var(--neon-cyan)); /* ie. save/unsave */
 	--color-fg-author: rgb(var(--neon-green));
-	--color-fg-shape: rgb(120 120 120);
+	--color-fg-shape: rgb(var(--neon-green));
 
 	/* elements */
 	--color-box-bg: #111;
 	--color-box-bg-shaded: #222;
 	--color-box-border: #444;
-	--color-box-border-focus: #999;
+	--color-box-border-focus: rgb(var(--neon-green));
 
-	--color-button-bg: #222;
+	--color-button-bg: rgb(var(--dark-purple));
 	--color-button-bg-shaded: #333;
 
 	--color-byline-fg: rgb(var(--stone));
 	--color-byline-fg-hover: rgb(var(--cloud));
 
 	--color-hint-fg: rgb(var(--stone));
+
+	--color-comment-bg: rgb(var(--dark-purple));
+	--color-comment-border: rgb(var(--mid-purple));
 
 	--color-table-header-bg: #333;
 	--color-table-header-border: #555;
@@ -132,12 +141,54 @@ footer a {
 	color: var(--color-fg-link);
 }
 
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"],
+a.button {
+	border-color: rgb(var(--neon-green));
+	color: rgb(var(--neon-green));
+	font-family: var(--font-family-mono);
+}
+
+button:hover,
+input[type="button"]:hover,
+input[type="reset"]:hover,
+input[type="submit"]:hover {
+	background-color: rgba(0, 255, 136, 0.1);
+	box-shadow: 0 0 12px rgba(0, 255, 136, 0.2);
+	color: rgb(var(--neon-green));
+	text-decoration: none;
+}
+
 a:hover,
 header#nav a:hover,
 header#subnav a:hover,
 footer a:hover {
 	color: var(--color-fg-link-hover);
 	text-shadow: 0 0 8px var(--color-fg-link-shadow);
+}
+
+input,
+button,
+select,
+textarea {
+	background-color: rgb(var(--deep-purple));
+}
+
+input:focus,
+button:focus,
+select:focus,
+textarea:focus {
+	background-color: rgb(var(--dark-purple));
+	border-color: transparent;
+	color: var(--color-fg);
+	outline: var(--input-outline-width) solid var(--color-box-border-focus);
+}
+
+.markdown_help,
+.markdown_help summary {
+	color: rgb(var(--stone));
 }
 
 a.tag {
@@ -162,6 +213,10 @@ a.tag:hover {
 
 .upvoter {
 	font-size: var(--font-size-medium);
+}
+
+h1 {
+	color: rgb(var(--neon-green));
 }
 
 li.story,
@@ -224,4 +279,75 @@ li .byline {
 .hint {
 	color: var(--color-hint-fg);
 	font-size: var(--font-size-medium);
+}
+
+.last_read_newest {
+	border-bottom: 1px solid var(--color-fg-shape);
+	color: rgb(var(--neon-green));
+}
+
+.comment {
+	border-left: 3px solid var(--color-comment-border);
+	background: var(--color-comment-bg);
+	color: rgb(var(--tooth));
+	font-family: var(--font-hackt-mono);
+	font-size: var(--font-size-medium);
+	padding: 0.5em 0.2em 1em 0.2em;
+	margin-bottom: 0.5em;
+}
+
+.comment:hover {
+	border-left-color: rgb(var(--neon-green) / 40%);
+	background-color: rgb(var(--mid-purple) / 30%);
+}
+
+.comment .details a {
+	color: var(--color-byline-fg);
+}
+
+.comment .details a:hover {
+	color: var(--color-byline-fg-hover);
+}
+
+/* FIXME merge with default .byline */
+/* matches author in comment's 'by line' */
+.comment .details .byline > a:last-of-type,
+/* matches story title in comment's 'by line' */
+.comment .details .byline > span:first-of-type > a:nth-of-type(2) {
+	color: var(--color-fg-link);
+}
+
+
+.comment .details .byline > a:last-of-type, /* matches author in comment's 'by line' */
+.comment .details .byline > span:first-of-type > a:nth-of-type(2) /* matches story title in comment's 'by line' */
+{
+	color: var(--color-fg-link);
+}
+
+.comment .details .byline > a:last-of-type:hover, /* matches author in comment's 'by line' */
+.comment .details .byline > span:first-of-type > a:nth-of-type(2):hover /* matches story title in comment's 'by line' */
+{
+	color: var(--color-fg-link-hover);
+	text-shadow: 0 0 8px var(--color-fg-link-shadow);
+}
+/* EOFIXME */
+
+.comment_text {
+	font-family: var(--font-hackt);
+}
+
+li .comment_folder {
+	color: var(--color-byline-fg);
+}
+
+li .comment_folder:hover {
+	color: var(--color-byline-fg-hover);
+}
+
+li .comment_folder:before {
+	content: "\229F";
+}
+
+li .comment_folder_button:checked ~ .comment .comment_folder:before {
+	content: "\22A0";
 }
