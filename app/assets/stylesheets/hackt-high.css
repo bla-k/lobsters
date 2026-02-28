@@ -58,7 +58,7 @@
 	--color-fg-link-visited: rgb(130 160 255);
 	--color-fg-accent: rgb(var(--ultraviolet));
 	--color-fg-negative: rgb(255 60 60); /* red as in warning */
-	--color-fg-affirmative: rgb(60 200 60);
+	--color-fg-affirmative: rgb(var(--neon-cyan)); /* ie. save/unsave */
 	--color-fg-author: rgb(var(--neon-magenta));
 	--color-fg-shape: rgb(120 120 120);
 
@@ -157,7 +157,8 @@ a.tag:hover {
 	font-size: var(--font-size-medium);
 }
 
-li.story {
+li.story,
+li.story input {
 	font-family: var(--font-family-mono);
 }
 
