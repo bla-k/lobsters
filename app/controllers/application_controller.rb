@@ -134,7 +134,7 @@ class ApplicationController < ActionController::Base
   # https://web.archive.org/web/20180108083712/http://umaine.edu/lobsterinstitute/files/2011/12/LobsterColorsWeb.pdf
   def set_traffic_style
     @traffic_intensity = "?"
-    @traffic_style = "background-color: #ac130d;"
+    @traffic_style = "" # "background-color: #ac130d;"
     return true if Rails.application.read_only? ||
       agent_is_spider? ||
       %w[json rss].include?(params[:format])
@@ -143,7 +143,7 @@ class ApplicationController < ActionController::Base
     @traffic_intensity = TrafficHelper.cached_current_intensity
     # map intensity to 80-255 so there's always a little red
     hex = sprintf("%02x", (@traffic_intensity * 1.75 + 80).round)
-    @traffic_style = "background-color: ##{hex}0000;"
+    @traffic_style = "" # "background-color: ##{hex}0000;"
     return true unless @user
 
     color = :red
