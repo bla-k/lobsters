@@ -2,7 +2,7 @@
 
 class AboutController < ApplicationController
   caches_page :about, :chat, if: CACHE_PAGE
-  before_action :show_title_h1, except: [:four_oh_four]
+# before_action :show_title_h1, except: [:four_oh_four]
 
   def four_oh_four
     @title = "Resource Not Found"
