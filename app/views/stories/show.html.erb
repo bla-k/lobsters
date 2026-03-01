@@ -55,25 +55,27 @@
 </div>
 
 <% if @user&.is_moderator? %>
-  <p>
-    Users hiding this story:
-    <% if @story.hidings.count == 0 %>(none)<% end %>
-    <% @story.hidings.each do |hiding| %>
-      <%= styled_user_link(hiding.user) %>
-    <% end %>
-  </p>
+  <div class="show-moderator">
+    <p>
+      Users hiding this story:
+      <% if @story.hidings.count == 0 %>(none)<% end %>
+      <% @story.hidings.each do |hiding| %>
+        <%= styled_user_link(hiding.user) %>
+      <% end %>
+    </p>
 
-  <% older_log, recent_log = Moderation.for_story(@story).partition { it.created_at.before? 3.months.ago } %>
-  <% if recent_log.count > 0 %>
-    <label>Recent modlog for this submitter, this story, and this story's comments</label>
-    <%= render partial: 'moderations/table', locals: { moderations: recent_log } %>
-  <% else %>
-    <label>No recent modlog entries</label>
-  <% end %>
-  <details>
-    <summary><%= older_log.count %> older</summary>
-    <%= render partial: 'moderations/table', locals: { moderations: older_log } %>
-  </details>
+    <% older_log, recent_log = Moderation.for_story(@story).partition { it.created_at.before? 3.months.ago } %>
+    <% if recent_log.count > 0 %>
+      <div>Recent modlog for this submitter, this story, and this story's comments</div>
+      <%= render partial: 'moderations/table', locals: { moderations: recent_log } %>
+    <% else %>
+      <div>No recent modlog entries</div>
+    <% end %>
+    <details>
+      <summary><%= older_log.count %> older</summary>
+      <%= render partial: 'moderations/table', locals: { moderations: older_log } %>
+    </details>
+  </div>
 <% end %>
 
 <% if !@story.previewing %>
