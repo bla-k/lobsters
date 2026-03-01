@@ -19,16 +19,17 @@
 	--input-outline-width: 1px;
 
 	/* palette */
-	--deep-purple: 31 32 46;
-	--dark-purple: 37 38 54;
-	--mid-purple: 53 54 71;
 	--neon-green: 0 255 136;
 	--neon-cyan: 0 212 255;
 	--neon-magenta: 255 0 170;
+	--ultraviolet: 168 85 247;
+
+	--deep-purple: 31 32 46;
+	--dark-purple: 37 38 54;
+	--mid-purple: 53 54 71;
 	--cloud: 160 160 160;
 	--tooth: 224 224 224;
 	--stone: 136 136 136;
-	--ultraviolet: 168 85 247;
 
 	/* neon-green / 20 + deep-purple */
 	--deep-green-20: 24 76 64;
@@ -128,6 +129,9 @@
 	/* mobile */
 	--color-mobile-story-comments-bubble-fill: #333;
 	--color-mobile-story-comments-bubble-fill-zero: #222;
+
+	/* legacy application.css */
+	--font-size-tags: var(--font-size-small);
 }
 
 /* overrides */
@@ -199,6 +203,7 @@ textarea:focus {
 
 a.tag {
 	color: var(--color-tag-fg);
+	font-size: var(--font-size-small);
 }
 
 a.tag:hover {
@@ -391,8 +396,13 @@ input, button, select {
 
 #story_holder .ts-control {
 	background-color: rgb(var(--deep-purple));
+	font-family: var(--font-family-mono);
 	padding: 0px 4px;
 	margin: 0;
+}
+
+.ts-dropdown {
+	font-family: var(--font-family-mono);
 }
 
 #story_holder .ts-control:focus {
@@ -420,28 +430,3 @@ details.boxline {
 .show-moderator p {
 	margin: 0;
 }
-
-/*
-.box .boxline {
-	display: flex;
-	flex-direction: row;
-}
-
-.box .boxline label:first-child {
-	margin: 0;
-	height: 32px;
-}
-
-.box .boxline input {
-	margin: 0;
-	height: 32px;
-}
-
-.box .boxline label:last-child {
-	flex: 1;
-	margin: 0;
-	padding-left: 0.5em;
-	height: 32px;
-}
-*/
-

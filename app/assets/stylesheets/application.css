@@ -9,9 +9,6 @@ But I make an unprincipled exception for :has because it solves so many big prob
 
 :root {
 	/* common color scheme */
-	--font-size-default: 1rem;
-	--font-size-tags: 0.66rem;
-
 	--color-bg: rgb(var(--base-bg));
 	--color-bg-50: rgb(var(--base-bg) / 50%);
 
