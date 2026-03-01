@@ -342,7 +342,7 @@ header {
 }
 
 #logo {
-	background: transparent url(logo-transparent.svg) no-repeat center;
+	background: transparent url(logo-hackt-small.svg) no-repeat center;
 	flex: 0 0 16px; /* width; no padding l/r */
 	float: left;
 	display: block;
