@@ -501,3 +501,24 @@ details.boxline {
 .show-moderator p {
 	margin: 0;
 }
+
+/* scrollbar */
+
+::-webkit-scrollbar {
+	background: var(--deep-purple);
+	width: 12px;
+}
+
+::-webkit-scrollbar-track {
+	background: var(--deep-purple);
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--mid-purple);
+	border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: var(--ultraviolet-30);
+}
+
