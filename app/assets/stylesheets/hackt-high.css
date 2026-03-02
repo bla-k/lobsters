@@ -5,6 +5,12 @@
 :root {
 	/* ================================ palette ================================ */
 
+	--neon-cyan: #00d4ff;
+	--neon-cyan-15: rgba(0, 212, 255, 0.15);
+	--neon-cyan-20: rgba(0, 212, 255, 0.2);
+	--neon-cyan-30: rgba(0, 212, 255, 0.3);
+	--neon-cyan-40: rgba(0, 212, 255, 0.4);
+
 	--neon-magenta: #ff00aa;
 
 	--neon-green: #00ff88;
@@ -23,6 +29,9 @@
 	--mid-purple: #353647;
 	--mid-purple-30: rgba(53, 54, 71, 0.3);
 
+	/* blend: base * opacity + background * (1 - opacity)
+	 *    eg. neon-green * 0.2 + deep-purple * 0.8 */
+	--deep-green-20: #184c40;
 	--deep-green-60: #0ca564;
 	--deep-violet-80: #8c4ace;
 
@@ -77,92 +86,9 @@
 
 	--input-outline-width: 1px;
 
-	/* ========================================================================= */
-
-	/* palette */
-	--neon-cyan: 0 212 255;
-	--neon-magenta: 255 0 170;
-
-	--cloud: 160 160 160;
-	--tooth: 224 224 224;
-	--stone: 136 136 136;
-
-	/* neon-green / 20 + deep-purple */
-	--deep-green-20: 24 76 64;
-	--deep-green-30: 21 98 73;
-	--deep-violet-60: 113 63 166;
-
-
-	/* monochrome */
-	--base-bg: var(--deep-purple);
-	--base-fg: 255 255 255;
-
-	--opacity-fg: 100%; /* primary text */
-	--opacity-fg-contrast-13: 100%;
-	--opacity-fg-contrast-10: 99%;
-	--opacity-fg-contrast-7-5: 98%;
-	--opacity-fg-contrast-6: 97%;
-	--opacity-fg-contrast-5: 96%;
-	--opacity-fg-contrast-4-5: 95%;
-
-	--opacity-gradient-lit: 30%;
-	--opacity-gradient-mid: 20%;
-	--opacity-gradient-dim: 15%;
-	--opacity-gradient-shadowed: 5%;
-
-	--opacity-shadow-80: 80%;
-	--opacity-shadow-25: 70%;
-	--opacity-shadow-10: 60%;
-	--opacity-shadow-5: 40%;
+	/* ================================ opacity ================================ */
 
 	--opacity-deleted: 0.7;
-
-	/* backgrounds and foregrounds */
-	--color-bg-target: rgb(var(--deep-green-20));
-
-	/* elements */
-	--color-box-bg: #111;
-	--color-box-bg-shaded: rgb(var(--mid-purple));
-	--color-box-border: #444;
-
-	--color-button-bg: rgb(var(--dark-purple));
-	--color-button-bg-shaded: #333;
-
-	--color-table-header-border: #555;
-	--color-table-row-border: #333;
-
-	--color-tag-bg: rgb(var(--ultraviolet) / var(--opacity-gradient-dim));
-	--color-tag-bg-hover: rgb(var(--ultraviolet) / var(--opacity-gradient-lit));
-	--color-tag-bg-shadow: rgb(var(--ultraviolet) / var(--opacity-gradient-mid));
-	--color-tag-border: rgb(var(--ultraviolet) / var(--opacity-gradient-mid));
-	--color-tag-media-bg: #1a3d66;
-	--color-tag-media-border: #264d80;
-	--color-tag-meta-bg: #333;
-	--color-tag-meta-border: #555;
-
-	--color-hat-crown-fill: #595959;
-	--color-hat-crown-stroke: #333;
-	--color-hat-brim-stroke: #444;
-
-	/* FIXME notice colors */
-	--color-flash-bg-error: #451714;
-	--color-flash-bg-success: #273820;
-	--color-flash-bg-notice: #142e36;
-
-	--color-lobsters-fg-has-suggestions: #ff8080;
-
-	--color-lobsters-tag-special-bg: #4d0000;
-	--color-lobsters-tag-special-border: #800000;
-
-	--color-lobsters-hat-sysop-crown-fill: #8a5252;
-	--color-lobsters-hat-sysop-brim-stroke: #6f4444;
-
-	/* mobile */
-	--color-mobile-story-comments-bubble-fill: #333;
-	--color-mobile-story-comments-bubble-fill-zero: #222;
-
-	/* legacy application.css */
-	--font-size-tags: var(--font-size-small);
 
 	/* ========================= application.css bridge ======================== */
 
@@ -171,10 +97,16 @@
 
 	--color-bg-accent: var(--highlight);
 	--color-bg-shaded: var(--surface-elevated);
+	--color-bg-target: var(--deep-green-20);
 
 	--color-box-border-focus: var(--accent);
 
+	--color-box-bg: var(--surface);
+	--color-box-bg-shaded: var(--surface-elevated);
+	--color-box-border: var(--surface-elevated);
+
 	--color-button-bg: var(--surface-raised);
+	--color-button-bg-shaded: var(--accent-subtle);
 
 	--color-byline-fg: var(--text-muted);
 	--color-byline-fg-hover: var(--text-muted-hover);
@@ -209,21 +141,60 @@
 
 	--color-fg-shape: var(--accent);
 
+	--color-flash-bg-error: rgba(255, 60, 60, 0.15);
+	--color-flash-bg-success: rgba(0, 255, 136, 0.15);
+	--color-flash-bg-notice: rgba(0, 212, 255, 0.15);
+
 	--color-hint-fg: var(--text-muted);
 
 	--color-light-25: rgba(224, 224, 224, 0.25); /* --silver, 25% opacity */
+
+	--color-lobsters-fg-has-suggestions: var(--neon-magenta);
 
 	--color-shadow-80: rgba(0, 0, 0, 0.8);
 	--color-shadow-25: rgba(0, 0, 0, 0.7);
 	--color-shadow-10: rgba(0, 0, 0, 0.6);
 
 	--color-table-header-bg: var(--surface-elevated);
+	--color-table-header-border: var(--graphite);
 	--color-table-row-bg-even: var(--surface);
 	--color-table-row-bg-odd: var(--surface-raised);
+	--color-table-row-border: var(--surface-elevated);
 
+	--color-tag-bg: var(--ultraviolet-15);
+	--color-tag-bg-hover: var(--ultraviolet-30);
+	--color-tag-bg-shadow: var(--ultraviolet-20);
+	--color-tag-border: var(--ultraviolet-20);
 	--color-tag-fg: var(--highlight);
 
+	--color-tag-media-bg: var(--neon-cyan-15);
+	--color-tag-media-border: var(--neon-cyan-20);
+	--color-tag-media-hover: var(--neon-cyan-30);
+	--color-tag-media-shadow: var(--neon-cyan-30);
+	--color-tag-media-fg: var(--neon-cyan);
+	--color-tag-meta-bg: #333;
+	--color-tag-meta-border: #555;
+
+	--color-lobsters-tag-special-bg: var(--neon-green-10);
+	--color-lobsters-tag-special-border: var(--neon-green-20);
+
 	--comment-controls-height: 1.2lh;
+
+	--font-size-tags: var(--font-size-small);
+
+	/* ==================== hat, I'd rather drop the feature =================== */
+
+	--color-hat-crown-fill: var(--surface-elevated);
+	--color-hat-crown-stroke: var(--surface-raised);
+	--color-hat-brim-stroke: var(--surface-elevated);
+
+	--color-lobsters-hat-sysop-crown-fill: var(--deep-violet-80);
+	--color-lobsters-hat-sysop-brim-stroke: var(--ultraviolet-40);
+
+	/* ========================== mobile comment count =========================== */
+
+	--color-mobile-story-comments-bubble-fill: var(--surface-elevated);
+	--color-mobile-story-comments-bubble-fill-zero: var(--surface-raised);
 }
 
 * {
@@ -304,6 +275,16 @@ a.tag:hover {
 	background-color: var(--color-tag-bg-hover);
 	box-shadow: 0 0 8px var(--color-tag-bg-shadow);
 }
+
+a.tag_is_media {
+	color: var(--color-tag-media-fg);
+}
+
+a.tag_is_media:hover {
+	background-color: var(--color-tag-media-hover);
+	box-shadow: 0 0 8px var(--color-tag-media-shadow);
+}
+
 
 a#logo {
 	margin-top: 1px;
