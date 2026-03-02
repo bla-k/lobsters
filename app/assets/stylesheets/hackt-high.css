@@ -516,3 +516,20 @@ details.boxline {
 ::-webkit-scrollbar-thumb:hover {
 	background: var(--ultraviolet-30);
 }
+
+nav.morelink a {
+	color: var(--link);
+	font-weight: bold;
+	text-decoration: none;
+}
+
+nav.morelink a:hover {
+	color: var(--link-hover);
+}
+
+nav.morelink a[rel="prev"]::before {
+	content: "\00ab "/"";
+}
+nav.morelink a[rel="next"]::after {
+	content: " \00bb"/"";
+}
