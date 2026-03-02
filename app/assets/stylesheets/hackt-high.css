@@ -393,6 +393,11 @@ li .byline {
 	background-color: var(--surface-hover);
 }
 
+.comment:target, li:target, p:target, div:target, span:target {
+	background-color: var(--accent-subtle);
+	border-radius: 0px;
+}
+
 .comment .details a {
 	color: var(--text-muted);
 }
