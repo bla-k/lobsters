@@ -3,6 +3,65 @@
 @import url("hackt-fonts.css");
 
 :root {
+	/* ================================ palette ================================ */
+
+	--neon-magenta: #ff00aa;
+
+	--neon-green: #00ff88;
+	--neon-green-10: rgba(0, 255, 136, 0.1);
+	--neon-green-20: rgba(0, 255, 136, 0.2);
+	--neon-green-40: rgba(0, 255, 136, 0.4);
+
+	--ultraviolet: #a855f7;
+	--ultraviolet-15: rgba(168, 85, 247, 0.15);
+	--ultraviolet-20: rgba(168, 85, 247, 0.2);
+	--ultraviolet-30: rgba(168, 85, 247, 0.3);
+	--ultraviolet-40: rgba(168, 85, 247, 0.4);
+
+	--deep-purple: #1f202e;
+	--dark-purple: #252636;
+	--mid-purple: #353647;
+	--mid-purple-30: rgba(53, 54, 71, 0.3);
+
+	--deep-green-60: #0ca564;
+	--deep-violet-80: #8c4ace;
+
+	--silver: #e0e0e0;
+	--pewter: #b4b4b4;
+	--graphite: #787878;
+
+	--vermillion: #ff3c3c;
+
+	/* ========================= broad semantic tokens ========================= */
+
+	--text: var(--silver);
+	--text-muted: var(--graphite);
+	--text-muted-hover: var(--pewter);
+
+	--accent: var(--neon-green);
+	--accent-subtle: var(--neon-green-10);
+	--accent-glow: var(--neon-green-20);
+	--accent-soft: var(--neon-green-40);
+
+	--link: var(--neon-green);
+	--link-hover: var(--ultraviolet);
+	--link-shadow: var(--ultraviolet-40);
+	--link-visited: var(--deep-green-60);
+	--link-visited-hover: var(--deep-violet-80);
+
+	--highlight: var(--ultraviolet);
+	--highlight-hover: var(--neon-magenta);
+
+	--affirmative: var(--neon-green);
+	--negative: var(--vermillion);
+
+	--surface: var(--deep-purple);
+	--surface-raised: var(--dark-purple);
+	--surface-elevated: var(--mid-purple);
+	--surface-hover: var(--mid-purple-30);
+
+	/* ========================================================================= */
+
 	/* fonts */
 	--font-hackt-mono: "JetBrains Mono", monospace;
 	--font-hackt: "Space Grotesk", sans-serif;
@@ -19,14 +78,9 @@
 	--input-outline-width: 1px;
 
 	/* palette */
-	--neon-green: 0 255 136;
 	--neon-cyan: 0 212 255;
 	--neon-magenta: 255 0 170;
-	--ultraviolet: 168 85 247;
 
-	--deep-purple: 31 32 46;
-	--dark-purple: 37 38 54;
-	--mid-purple: 53 54 71;
 	--cloud: 160 160 160;
 	--tooth: 224 224 224;
 	--stone: 136 136 136;
@@ -34,9 +88,8 @@
 	/* neon-green / 20 + deep-purple */
 	--deep-green-20: 24 76 64;
 	--deep-green-30: 21 98 73;
-	--deep-green-60: 12 165 100;
 	--deep-violet-60: 113 63 166;
-	--deep-violet-80: 140 74 206;
+
 
 	/* monochrome */
 	--base-bg: var(--deep-purple);
@@ -63,47 +116,23 @@
 	--opacity-deleted: 0.7;
 
 	/* backgrounds and foregrounds */
-	--color-bg-accent: rgb(var(--ultraviolet));
 	--color-bg-target: rgb(var(--deep-green-20));
-
-	--color-fg-link: rgb(var(--neon-green));
-	--color-fg-link-hover: rgb(var(--ultraviolet));
-	--color-fg-link-shadow: rgb(var(--ultraviolet) / var(--opacity-shadow-5));
-	--color-fg-link-visited: rgb(var(--deep-green-60));
-	--color-fg-accent: rgb(var(--ultraviolet));
-	--color-fg-negative: rgb(255 60 60); /* red as in warning */
-	--color-fg-affirmative: rgb(var(--neon-cyan)); /* ie. save/unsave */
-	--color-fg-author: rgb(var(--neon-green));
-	--color-fg-shape: rgb(var(--neon-green));
 
 	/* elements */
 	--color-box-bg: #111;
 	--color-box-bg-shaded: rgb(var(--mid-purple));
 	--color-box-border: #444;
-	--color-box-border-focus: rgb(var(--neon-green));
 
 	--color-button-bg: rgb(var(--dark-purple));
 	--color-button-bg-shaded: #333;
 
-	--color-byline-fg: rgb(var(--stone));
-	--color-byline-fg-hover: rgb(var(--cloud));
-
-	--color-hint-fg: rgb(var(--stone));
-
-	--color-comment-bg: rgb(var(--dark-purple));
-	--color-comment-border: rgb(var(--mid-purple));
-
-	--color-table-header-bg: rgb(var(--mid-purple));
 	--color-table-header-border: #555;
-	--color-table-row-bg-even: rgb(var(--deep-purple));
-	--color-table-row-bg-odd: rgb(var(--dark-purple));
 	--color-table-row-border: #333;
 
 	--color-tag-bg: rgb(var(--ultraviolet) / var(--opacity-gradient-dim));
 	--color-tag-bg-hover: rgb(var(--ultraviolet) / var(--opacity-gradient-lit));
 	--color-tag-bg-shadow: rgb(var(--ultraviolet) / var(--opacity-gradient-mid));
 	--color-tag-border: rgb(var(--ultraviolet) / var(--opacity-gradient-mid));
-	--color-tag-fg: rgb(var(--ultraviolet));
 	--color-tag-media-bg: #1a3d66;
 	--color-tag-media-border: #264d80;
 	--color-tag-meta-bg: #333;
@@ -132,23 +161,74 @@
 
 	/* legacy application.css */
 	--font-size-tags: var(--font-size-small);
+
+	/* ========================= application.css bridge ======================== */
+
+	--color-bg: var(--surface);
+
+	--color-bg-accent: var(--highlight);
+	--color-bg-shaded: var(--surface-elevated);
+
+	--color-box-border-focus: var(--accent);
+
+	--color-button-bg: var(--surface-raised);
+
+	--color-byline-fg: var(--text-muted);
+	--color-byline-fg-hover: var(--text-muted-hover);
+
+	--color-comment-bg: var(--surface-raised);
+	--color-comment-border: var(--surface-elevated);
+
+	--color-fg: var(--text);
+
+	--color-fg-accent: var(--highlight);
+
+	--color-fg-affirmative: var(--affirmative);
+
+	--color-fg-author: var(--accent);
+
+	--color-fg-contrast-13: var(--text);
+	--color-fg-contrast-10: var(--text);
+	--color-fg-contrast-7-5: var(--text-muted-hover);
+	--color-fg-contrast-6: var(--text-muted-hover);
+	--color-fg-contrast-5: var(--text-muted-hover);
+	--color-fg-contrast-4-5: var(--text-muted);
+
+	--color-fg-link: var(--link);
+	--color-fg-link-hover: var(--link-hover);
+	--color-fg-link-shadow: var(--link-shadow);
+	--color-fg-link-visited: var(--link-visited);
+
+	--color-fg-negative: var(--negative);
+
+	--color-fg-shape: var(--accent);
+
+	--color-hint-fg: var(--text-muted);
+
+	--color-table-header-bg: var(--surface-elevated);
+	--color-table-row-bg-even: var(--surface);
+	--color-table-row-bg-odd: var(--surface-raised);
+
+	--color-tag-fg: var(--highlight);
 }
 
-/* overrides */
+* {
+	box-sizing: border-box;
+}
 
 body, textarea, input, button {
-	color: rgb(var(--tooth));
+	color: var(--text);
 	font-family: var(--font-family-sans);
 }
 
 input::placeholder, textarea::placeholder {
-	color: rgb(var(--stone));
+	color: var(--text-muted);
 }
 
 header#nav a,
 header#subnav a,
 footer a {
-	color: var(--color-fg-link);
+	color: var(--link);
 }
 
 button,
@@ -156,8 +236,8 @@ input[type="button"],
 input[type="reset"],
 input[type="submit"],
 a.button {
-	border-color: rgb(var(--neon-green));
-	color: rgb(var(--neon-green));
+	border-color: var(--accent);
+	color: var(--accent);
 	font-family: var(--font-family-mono);
 }
 
@@ -165,9 +245,9 @@ button:hover,
 input[type="button"]:hover,
 input[type="reset"]:hover,
 input[type="submit"]:hover {
-	background-color: rgba(0, 255, 136, 0.1);
-	box-shadow: 0 0 12px rgba(0, 255, 136, 0.2);
-	color: rgb(var(--neon-green));
+	background-color: var(--accent-subtle);
+	box-shadow: 0 0 12px var(--accent-glow);
+	color: var(--accent);
 	text-decoration: none;
 }
 
@@ -175,34 +255,34 @@ a:hover,
 header#nav a:hover,
 header#subnav a:hover,
 footer a:hover {
-	color: var(--color-fg-link-hover);
-	text-shadow: 0 0 8px var(--color-fg-link-shadow);
+	color: var(--link-hover);
+	text-shadow: 0 0 8px var(--link-shadow);
 }
 
 input,
 button,
 select,
 textarea {
-	background-color: rgb(var(--deep-purple));
+	background-color: var(--surface);
 }
 
 input:focus,
 button:focus,
 select:focus,
 textarea:focus {
-	background-color: rgb(var(--dark-purple));
+	background-color: var(--surface-raised);
 	border-color: transparent;
-	color: var(--color-fg);
-	outline: var(--input-outline-width) solid var(--color-box-border-focus);
+	color: var(--text);
+	outline: var(--input-outline-width) solid var(--accent);
 }
 
 .markdown_help,
 .markdown_help summary {
-	color: rgb(var(--stone));
+	color: var(--text-muted);
 }
 
 a.tag {
-	color: var(--color-tag-fg);
+	color: var(--highlight);
 	font-size: var(--font-size-small);
 }
 
@@ -221,9 +301,9 @@ a#logo {
 
 .upvoter:hover:before,
 .upvoted .upvoter:before {
-	color: rgb(var(--neon-magenta));
+	color: var(--highlight-hover);
 	font-size: var(--font-size-large);
-	-webkit-text-stroke: 1px rgb(var(--neon-magenta));
+	-webkit-text-stroke: 1px var(--highlight-hover);
 }
 
 .upvoter {
@@ -231,7 +311,7 @@ a#logo {
 }
 
 h1 {
-	color: rgb(var(--neon-green));
+	color: var(--accent);
 }
 
 li.story,
@@ -245,24 +325,26 @@ li.story.saved .saver .btn-link {
 }
 
 li.story.saved .saver .btn-link:hover {
-	color: var(--color-byline-fg-hover);
+	color: var(--text-muted-hover);
+	background-color: transparent;
+	box-shadow: none;
 }
 
 li.story div.details span.link a:visited:hover {
-	color: rgb(var(--deep-violet-80));
+	color: var(--link-visited-hover);
 }
 
 li .domain {
-	color: var(--color-fg-link);
+	color: var(--link);
 	font-size: var(--font-size-medium);
 }
 
 li .domain:hover {
-	color: var(--color-fg-link-hover);
+	color: var(--link-hover);
 }
 
 li .byline {
-	color: var(--color-byline-fg);
+	color: var(--text-muted);
 	font-size: var(--font-size-small);
 }
 
@@ -276,35 +358,35 @@ li .byline {
 .byline a:hover,
 .byline input[type="submit"]:hover,
 .byline label:hover {
-	color: var(--color-byline-fg-hover);
+	color: var(--text-muted-hover);
 	text-shadow: none;
 }
 
 .byline .u-author,
 .byline .comments_label > a {
-	color: var(--color-fg-link);
+	color: var(--link);
 }
 
 .byline .u-author:hover,
 .byline .comments_label > a:hover {
-	color: var(--color-fg-link-hover);
-	text-shadow: 0 0 8px var(--color-fg-link-shadow);
+	color: var(--link-hover);
+	text-shadow: 0 0 8px var(--link-shadow);
 }
 
 .hint {
-	color: var(--color-hint-fg);
+	color: var(--text-muted);
 	font-size: var(--font-size-medium);
 }
 
 .last_read_newest {
-	border-bottom: 1px solid var(--color-fg-shape);
-	color: rgb(var(--neon-green));
+	border-bottom: 1px solid var(--accent);
+	color: var(--accent);
 }
 
 .comment {
-	border-left: 3px solid var(--color-comment-border);
-	background: var(--color-comment-bg);
-	color: rgb(var(--tooth));
+	border-left: 3px solid var(--surface-elevated);
+	background: var(--surface-raised);
+	color: var(--text);
 	font-family: var(--font-hackt-mono);
 	font-size: var(--font-size-medium);
 	padding: 0.5em 0.2em 1em 0.2em;
@@ -312,16 +394,16 @@ li .byline {
 }
 
 .comment:hover {
-	border-left-color: rgb(var(--neon-green) / 40%);
-	background-color: rgb(var(--mid-purple) / 30%);
+	border-left-color: var(--accent-soft);
+	background-color: var(--surface-hover);
 }
 
 .comment .details a {
-	color: var(--color-byline-fg);
+	color: var(--text-muted);
 }
 
 .comment .details a:hover {
-	color: var(--color-byline-fg-hover);
+	color: var(--text-muted-hover);
 }
 
 /* FIXME this selector turns REPLY in green in comments view via direct link */
@@ -330,21 +412,14 @@ li .byline {
 .comment .details .byline > a:last-of-type,
 /* matches story title in comment's 'by line' */
 .comment .details .byline > span:first-of-type > a:nth-of-type(2) {
-	color: var(--color-fg-link);
-}
-
-
-.comment .details .byline > a:last-of-type, /* matches author in comment's 'by line' */
-.comment .details .byline > span:first-of-type > a:nth-of-type(2) /* matches story title in comment's 'by line' */
-{
-	color: var(--color-fg-link);
+	color: var(--link);
 }
 
 .comment .details .byline > a:last-of-type:hover, /* matches author in comment's 'by line' */
 .comment .details .byline > span:first-of-type > a:nth-of-type(2):hover /* matches story title in comment's 'by line' */
 {
-	color: var(--color-fg-link-hover);
-	text-shadow: 0 0 8px var(--color-fg-link-shadow);
+	color: var(--link-hover);
+	text-shadow: 0 0 8px var(--link-shadow);
 }
 /* EOFIXME */
 
@@ -353,11 +428,11 @@ li .byline {
 }
 
 li .comment_folder {
-	color: var(--color-byline-fg);
+	color: var(--text-muted);
 }
 
 li .comment_folder:hover {
-	color: var(--color-byline-fg-hover);
+	color: var(--text-muted-hover);
 }
 
 li .comment_folder:before {
@@ -370,11 +445,11 @@ li .comment_folder_button:checked ~ .comment .comment_folder:before {
 
 .comment.replied .flagger,
 .comment.flagged .comment_replier {
-	color: var(--color-byline-fg);
+	color: var(--text-muted);
 }
 
 .thread_summary {
-	color: rgb(var(--stone));
+	color: var(--text-muted);
 	margin-top: 0.5em;
 	margin-bottom: 0.5em;
 	font-size: var(--font-size-medium);
@@ -390,12 +465,8 @@ input, button, select {
 	padding: 0 4px;
 }
 
-* {
-	box-sizing: border-box;
-}
-
 #story_holder .ts-control {
-	background-color: rgb(var(--deep-purple));
+	background-color: var(--surface);
 	font-family: var(--font-family-mono);
 	padding: 0px 4px;
 	margin: 0;
@@ -406,23 +477,23 @@ input, button, select {
 }
 
 #story_holder .ts-control:focus {
-	background-color: rgb(var(--dark-purple));
+	background-color: var(--surface-raised);
 }
 
 #story_holder .ts-control:focus-within {
-	border-color: rgb(var(--ultraviolet));
+	border-color: var(--highlight);
 }
 
 #story_holder .ts-control .data-ts-item {
-	color: var(--color-tag-fg);
+	color: var(--highlight);
 }
 
 details.boxline {
-	color: var(--color-byline-fg);
+	color: var(--text-muted);
 }
 
 .show-moderator {
-	color: var(--color-byline-fg);
+	color: var(--text-muted);
 	font-size: var(--font-size-medium);
 	margin: 0.5em 0;
 }
