@@ -7,36 +7,6 @@ https://web-platform-dx.github.io/web-features/
 But I make an unprincipled exception for :has because it solves so many big problems.
 */
 
-:root {
-	/* common color scheme */
-	--color-bg: rgb(var(--base-bg));
-	--color-bg-50: rgb(var(--base-bg) / 50%);
-
-	--color-fg: rgb(var(--base-fg) / var(--opacity-fg)); /* primary text */
-	--color-fg-contrast-13: rgb(var(--base-fg) / var(--opacity-fg-contrast-13));
-	--color-fg-contrast-10: rgb(var(--base-fg) / var(--opacity-fg-contrast-10));
-	--color-fg-contrast-7-5: rgb(var(--base-fg) / var(--opacity-fg-contrast-7-5));
-	--color-fg-contrast-6: rgb(var(--base-fg) / var(--opacity-fg-contrast-6));
-	--color-fg-contrast-5: rgb(var(--base-fg) / var(--opacity-fg-contrast-5));
-	--color-fg-contrast-4-5: rgb(var(--base-fg) / var(--opacity-fg-contrast-4-5));
-
-	--color-fg-gradient-lit: rgb(var(--base-fg) / var(--opacity-gradient-lit));
-	--color-fg-gradient-shadowed: rgb(var(--base-fg) / var(--opacity-gradient-shadowed));
-
-	--base-light: 255 255 255;
-	--color-light-25: rgb(var(--base-light) / 25%);
-
-	--base-shadow: 0 0 0;
-	--color-shadow: rgb(var(--base-shadow));
-	--color-shadow-80: rgb(var(--base-shadow) / var(--opacity-shadow-80));
-	--color-shadow-25: rgb(var(--base-shadow) / var(--opacity-shadow-25));
-	--color-shadow-10: rgb(var(--base-shadow) / var(--opacity-shadow-10));
-
-	/* dimensions */
-	--comment-controls-height: 1.2lh;
-	--input-outline-width: 2px;
-}
-
 /* generics */
 
 html {

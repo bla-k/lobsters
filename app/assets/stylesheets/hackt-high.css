@@ -60,9 +60,8 @@
 	--surface-elevated: var(--mid-purple);
 	--surface-hover: var(--mid-purple-30);
 
-	/* ========================================================================= */
+	/* ================================= fonts ================================= */
 
-	/* fonts */
 	--font-hackt-mono: "JetBrains Mono", monospace;
 	--font-hackt: "Space Grotesk", sans-serif;
 
@@ -74,8 +73,11 @@
 	--font-size-medium: 0.80rem;
 	--font-size-small: 0.66rem;
 
-	/* dimensions */
+	/* =============================== dimensions ============================== */
+
 	--input-outline-width: 1px;
+
+	/* ========================================================================= */
 
 	/* palette */
 	--neon-cyan: 0 212 255;
@@ -165,6 +167,7 @@
 	/* ========================= application.css bridge ======================== */
 
 	--color-bg: var(--surface);
+	--color-bg-50: rgba(31, 32, 46, 0.5); /* --surface, 50% opecity */
 
 	--color-bg-accent: var(--highlight);
 	--color-bg-shaded: var(--surface-elevated);
@@ -199,17 +202,28 @@
 	--color-fg-link-shadow: var(--link-shadow);
 	--color-fg-link-visited: var(--link-visited);
 
+	--color-fg-gradient-lit: rgba(224, 224, 224, 0.3); /* --silver, 30% opacity */
+	--color-fg-gradient-shadowed: rgba(224, 224, 224, 0.05);
+
 	--color-fg-negative: var(--negative);
 
 	--color-fg-shape: var(--accent);
 
 	--color-hint-fg: var(--text-muted);
 
+	--color-light-25: rgba(224, 224, 224, 0.25); /* --silver, 25% opacity */
+
+	--color-shadow-80: rgba(0, 0, 0, 0.8);
+	--color-shadow-25: rgba(0, 0, 0, 0.7);
+	--color-shadow-10: rgba(0, 0, 0, 0.6);
+
 	--color-table-header-bg: var(--surface-elevated);
 	--color-table-row-bg-even: var(--surface);
 	--color-table-row-bg-odd: var(--surface-raised);
 
 	--color-tag-fg: var(--highlight);
+
+	--comment-controls-height: 1.2lh;
 }
 
 * {
@@ -521,4 +535,3 @@ details.boxline {
 ::-webkit-scrollbar-thumb:hover {
 	background: var(--ultraviolet-30);
 }
-
