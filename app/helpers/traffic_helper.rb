@@ -60,6 +60,7 @@ module TrafficHelper
   end
 
   def self.novelty_logo
+    return nil
     time = Time.current
     h = ActionController::Base.helpers
 
