@@ -107,11 +107,11 @@ class << Rails.application
   end
 
   def domain
-    "lobste.rs"
+    "hackt.news"
   end
 
   def name
-    "Lobsters"
+    "hackt.news"
   end
 
   def og_description
