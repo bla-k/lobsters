@@ -43,7 +43,9 @@ test:
 production:
   primary:
     <<: *trilogy
-    database: lobsters
+    database: <%= ENV.fetch('DATABASE_NAME', 'lobsters') %>
+    username: <%= ENV.fetch('DATABASE_USERNAME') %>
+    password: <%= ENV.fetch('DATABASE_PASSWORD') %>
   cache:
     <<: *sqlite3
     database: storage/cache.sqlite3
