@@ -26,7 +26,7 @@
     Rails.application.name %></title>
 
   <%= stylesheet_link_tag "application" %>
-  <%= stylesheet_link_tag (@user&.prefers_color_scheme || "hackt") + "-" + (@user&.prefers_contrast || "system") %>
+  <%= stylesheet_link_tag "hackt-" + (@user&.prefers_contrast || "system") %>
   <%= stylesheet_link_tag "tom-select", "data-turbo-track": "reload" %>
   <%= stylesheet_link_tag "TomSelect_remove_button", "data-turbo-track": "reload" %>
 
