@@ -1,0 +1,48 @@
+.git
+.github
+.gitignore
+.dockerignore
+
+# Dev tooling
+Dockerfile.dev
+docker-compose.yaml
+docker-compose.prod.yaml
+
+# Secrets
+.env
+.env.*
+!.env.example
+config/master.key
+config/credentials/*.key
+
+# Local state
+log/
+tmp/
+storage/
+node_modules/
+vendor/bundle
+.bundle/
+
+# Test + coverage artifacts
+coverage/
+spec/
+test/
+
+# Editor/OS cruft
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Pre-generated assets (rebuilt in the image)
+public/assets/
+public/avatars/
+public/cache/
+public/sitemap*
+public/story_image/
+
+# Docs and runbooks
+README.md
+RUNBOOK.md
+INSTALL.md
+CLAUDE.md

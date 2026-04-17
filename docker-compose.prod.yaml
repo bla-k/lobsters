@@ -1,0 +1,138 @@
+name: lobsters
+
+x-app-env: &app-env
+  RAILS_ENV: production
+  DATABASE_HOST: db
+  DATABASE_USERNAME: lobsters
+  DATABASE_PASSWORD: ${DB_PASSWORD:?required}
+  DATABASE_NAME: lobsters
+  SECRET_KEY_BASE: ${SECRET_KEY_BASE:?required}
+  RAILS_MASTER_KEY: ${RAILS_MASTER_KEY:?required}
+  RAILS_LOG_TO_STDOUT: "true"
+
+x-app-common: &app-common
+  image: lobsters-app:latest
+  restart: unless-stopped
+  depends_on:
+    db:
+      condition: service_healthy
+  networks:
+    - backend
+    - frontend
+  security_opt:
+    - no-new-privileges:true
+  cap_drop:
+    - ALL
+  logging:
+    driver: json-file
+    options:
+      max-size: "10m"
+      max-file: "5"
+
+services:
+  db:
+    image: mariadb:11.4
+    restart: unless-stopped
+    environment:
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:?required}
+      MARIADB_DATABASE: lobsters
+      MARIADB_USER: lobsters
+      MARIADB_PASSWORD: ${DB_PASSWORD:?required}
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - backend
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+    security_opt:
+      - no-new-privileges:true
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "5"
+
+  app:
+    <<: *app-common
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ["bundle", "exec", "rails", "server", "-b", "0.0.0.0", "-p", "9292"]
+    environment:
+      <<: *app-env
+      RAILS_SERVE_STATIC_FILES: "true"
+      RAILS_MAX_THREADS: "5"
+      PIDFILE: /lobsters/tmp/puma.pid
+    volumes:
+      - storage_data:/lobsters/storage
+    tmpfs:
+      - /lobsters/tmp:mode=1777,size=128m
+      - /lobsters/public/cache:mode=1777,size=64m
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:9292/up"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 60s
+
+  jobs:
+    <<: *app-common
+    pull_policy: never
+    command: ["bundle", "exec", "rails", "solid_queue:start"]
+    environment:
+      <<: *app-env
+    volumes:
+      - storage_data:/lobsters/storage
+    tmpfs:
+      - /lobsters/tmp:mode=1777,size=128m
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+
+  tunnel:
+    image: cloudflare/cloudflared:2025.10.1
+    restart: unless-stopped
+    command: tunnel --no-autoupdate run
+    environment:
+      TUNNEL_TOKEN: ${CF_TUNNEL_TOKEN:?required}
+    depends_on:
+      app:
+        condition: service_healthy
+    # Share the app's network namespace so the Cloudflare dashboard's
+    # "localhost:9292" target resolves to the app container.
+    network_mode: "service:app"
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    deploy:
+      resources:
+        limits:
+          memory: 128M
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+volumes:
+  db_data:
+  storage_data:
+
+networks:
+  backend:
+    internal: true
+  frontend:
