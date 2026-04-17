@@ -115,7 +115,7 @@ class << Rails.application
   end
 
   def og_description
-    "A computing-focused community centered around link aggregation and discussion."
+    "Hackt News is the community news aggregator for HACKT — The Hacklab of Catania."
   end
 
   # to force everyone to be considered logged-out (without destroying
