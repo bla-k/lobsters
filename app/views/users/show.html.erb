@@ -97,13 +97,6 @@
       </div>
     <% end %>
 
-    <% if @user&.is_admin? || @user&.show_email? %>
-      <label>E-Mail</label>
-      <span>
-        <%= @showing_user.email %>
-      </span>
-    <% end %>
-
     <% if @showing_user.homepage.present? %>
       <label>Homepage</label>
 
