@@ -51,4 +51,9 @@ config/unicorn.conf.rb
 lib/tasks/deploy.rake
 storage/
 
+# deployment
+.env
+.env.*
+!.env.example
+
 /config/master.key
