@@ -4,6 +4,8 @@ DOMAINS_IDENTIFIER = /([^\/]+?)(?=\.json|\.rss|$|\/)/ # match example.com but no
 ORIGINS_IDENTIFIER = /(.+)(?=\.json|\.rss|$|\/)/ # match github.com/user but not github.com/user.rss
 
 Rails.application.routes.draw do
+  get "up" => "rails/health#show", as: :rails_health_check
+
   root to: "home#index",
     protocol: (Rails.application.config.force_ssl ? "https://" : "http://"),
     as: "root"
