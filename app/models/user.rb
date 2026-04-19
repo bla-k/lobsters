@@ -306,10 +306,13 @@ class User < ApplicationRecord
   end
 
   def banned_from_inviting?
+    return false if is_moderator? # HACKT:MOD_BYPASS
     disabled_invite_at?
   end
 
   def can_flag?(obj)
+    return true if is_moderator? # HACKT:MOD_BYPASS
+
     if is_new?
       return false
     elsif obj.is_a?(Story)
@@ -327,19 +330,22 @@ class User < ApplicationRecord
   end
 
   def can_invite?
+    return true if is_moderator? # HACKT:MOD_BYPASS
     !banned_from_inviting? && can_submit_stories?
   end
 
   def can_offer_suggestions?
+    return true if is_moderator? # HACKT:MOD_BYPASS
     !is_new? && (karma >= MIN_KARMA_TO_SUGGEST)
   end
 
   def can_see_invitation_requests?
-    can_invite? && (is_moderator? ||
-      (karma >= MIN_KARMA_FOR_INVITATION_REQUESTS))
+    return true if is_moderator? # HACKT:MOD_BYPASS
+    can_invite? && (karma >= MIN_KARMA_FOR_INVITATION_REQUESTS)
   end
 
   def can_submit_stories?
+    return true if is_moderator? # HACKT:MOD_BYPASS
     karma >= MIN_KARMA_TO_SUBMIT_STORIES
   end
 

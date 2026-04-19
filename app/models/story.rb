@@ -321,6 +321,7 @@ class Story < ApplicationRecord
 
   def check_already_posted_recently?
     return unless url.present? && new_record?
+    return if user&.is_moderator? # HACKT:MOD_BYPASS
 
     if most_recent_similar&.is_recent?
       errors.add(:url, "has already been submitted within the past #{RECENT_DAYS} days")
@@ -331,6 +332,7 @@ class Story < ApplicationRecord
 
   def check_not_new_domain_from_new_user
     return unless url.present? && new_record? && domain
+    return if user&.is_moderator? # HACKT:MOD_BYPASS
 
     if user&.is_new? && domain.stories.not_deleted(nil).count == 0
       errors.add :url, "is an unseen domain from a new user."
@@ -378,6 +380,7 @@ class Story < ApplicationRecord
       url.match?(%r{^https?://savannah.gnu.org/bugs/}) ||
       url.match?(%r{^https?://sourceforge.net/p/[^/]+/(support|tickets)/})
     )
+    return if user&.is_moderator? # HACKT:MOD_BYPASS
 
     if user.is_new?
       errors.add :url, "is a project's bug tracker or discussions"
@@ -608,7 +611,8 @@ class Story < ApplicationRecord
   def check_tags
     u = editor || user
 
-    if u&.is_new? &&
+    if !u&.is_moderator? && # HACKT:MOD_BYPASS
+        u&.is_new? &&
         (unpermitted = tags.select { |t| t.permit_by_new_users == false }).any?
       tags_str = unpermitted.map(&:tag).to_sentence
       errors.add :base, "New users can't submit stories with the tag(s) #{tags_str}"
@@ -725,6 +729,7 @@ class Story < ApplicationRecord
   end
 
   def disownable_by_user?(user)
+    return true if user&.is_moderator? # HACKT:MOD_BYPASS
     !new_record? && user&.id == user_id && created_at < DELETEABLE_DAYS.days.ago
   end
 
@@ -739,6 +744,7 @@ class Story < ApplicationRecord
   def is_editable_by_user?(user)
     return false if user.nil? || user.new_record? || # assumption: cabinet view
       new_record? # assumption: previewing
+    return true if user.is_moderator? # HACKT:MOD_BYPASS
 
     if user&.id == user_id
       if is_moderated?
@@ -776,7 +782,7 @@ class Story < ApplicationRecord
   end
 
   def is_undeletable_by_user?(user)
-    if user&.is_moderator?
+    if user&.is_moderator? # HACKT:MOD_BYPASS
       true
     elsif user && user.id == user_id && !is_moderated?
       true
@@ -1103,12 +1109,13 @@ class Story < ApplicationRecord
   end
 
   def url_is_editable_by_user?(user)
+    return true if user&.is_moderator? # HACKT:MOD_BYPASS
     if new_record? # assumption: can only see it previewing a new story
       true
     elsif !is_moderated? && created_at.after?(MAX_EDIT_MINS.minutes.ago)
       true
     else
-      user&.is_moderator?
+      false
     end
   end
 

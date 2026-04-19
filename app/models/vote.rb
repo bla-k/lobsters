@@ -191,6 +191,7 @@ class Vote < ApplicationRecord
   end
 
   def validate_flagger_hasnt_replied
+    return if User.where(id: user_id, is_moderator: true).exists? # HACKT:MOD_BYPASS
     if vote == -1 && comment_id && Comment.where(user_id: user_id, parent_comment_id: comment_id).exists?
       errors.add(:base, "You've already replied to the comment.")
     end

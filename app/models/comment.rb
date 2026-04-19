@@ -153,8 +153,9 @@ class Comment < ApplicationRecord
       errors.add(:hat, "not wearable by user")
 
     # .try so tests don't need to persist a story and user
-    new_record? && (story.try(:accepting_comments?) ||
-      errors.add(:base, "Story is no longer accepting comments."))
+    new_record? && !user&.is_moderator? && # HACKT:MOD_BYPASS
+      (story.try(:accepting_comments?) ||
+        errors.add(:base, "Story is no longer accepting comments."))
   end
 
   def self./(short_id)
@@ -254,7 +255,7 @@ class Comment < ApplicationRecord
   # without seeing the message
   def breaks_speed_limit?
     return false unless parent_comment_id
-    return false if user.is_moderator?
+    return false if user.is_moderator? # HACKT:MOD_BYPASS
 
     parent_comment_ids = parent_comment.parents.ids.append(parent_comment.id)
     flag_count = Vote.comments_flags(parent_comment_ids).count
@@ -379,6 +380,7 @@ class Comment < ApplicationRecord
   end
 
   def is_deletable_by_user?(user)
+    return true if user&.is_moderator? # HACKT:MOD_BYPASS
     if user&.id == user_id
       created_at >= DELETEABLE_DAYS.days.ago
     else
@@ -387,6 +389,7 @@ class Comment < ApplicationRecord
   end
 
   def is_disownable_by_user?(user)
+    return true if user&.is_moderator? # HACKT:MOD_BYPASS
     user && user.id == user_id && created_at && created_at < DELETEABLE_DAYS.days.ago
   end
 
@@ -399,6 +402,7 @@ class Comment < ApplicationRecord
   end
 
   def is_editable_by_user?(user)
+    return true if user&.is_moderator? # HACKT:MOD_BYPASS
     if user && user.id == user_id
       if is_gone?
         false
@@ -415,7 +419,7 @@ class Comment < ApplicationRecord
   end
 
   def is_undeletable_by_user?(user)
-    if user&.is_moderator?
+    if user&.is_moderator? # HACKT:MOD_BYPASS
       true
     elsif user && user.id == user_id && !is_moderated?
       true
@@ -484,7 +488,7 @@ class Comment < ApplicationRecord
   end
 
   def show_score_to_user?(u)
-    return true if u&.is_moderator?
+    return true if u&.is_moderator? # HACKT:MOD_BYPASS
 
     # hide score on new/near-zero comments to cut down on threads about voting
     # also hide if user has flagged the story/comment to make retaliatory flagging less fun

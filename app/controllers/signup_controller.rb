@@ -80,6 +80,7 @@ class SignupController < ApplicationController
   private
 
   def check_new_users
+    return if @user.is_moderator? # HACKT:MOD_BYPASS
     if !Rails.application.allow_new_users_to_invite? && @user.is_new?
       redirect_to root_path, flash: {error: "New users cannot send invites"}
     end

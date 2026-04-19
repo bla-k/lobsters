@@ -67,16 +67,14 @@ class Tag < ApplicationRecord
   end
 
   def user_can_filter?(user)
-    active? && (!privileged? || user.try(:is_moderator?))
+    return active? if user.try(:is_moderator?) # HACKT:MOD_BYPASS
+    active? && !privileged?
   end
 
   def can_be_applied_by?(user)
-    if privileged?
-      !!user.try(:is_moderator?)
+    return true if user.try(:is_moderator?) # HACKT:MOD_BYPASS
     # do include tags they can't use so they submit and get error
-    else
-      true
-    end
+    !privileged?
   end
 
   def filtered_count
