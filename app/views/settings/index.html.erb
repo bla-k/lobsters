@@ -30,14 +30,6 @@
           <% end %>
         </div>
 
-        <%= f.label :show_email, "Show Email on profile", class: "for_checkbox" %>
-        <span>
-          <%= f.check_box :show_email %>
-          <span class="hint">
-            Only shown to logged-in users
-          </span>
-        </span>
-
         <%= f.label :homepage, "Homepage" %>
         <span><%= f.url_field :homepage, autocapitalize: :off %>
         <span class="hint">Link external accounts below</span>
