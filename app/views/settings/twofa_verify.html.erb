@@ -1,5 +1,6 @@
 <% content_for :subnav do %>
-  <a href="/settings">Back to Settings</a>
+  <a href="/settings">Back to Settings</a> |
+  <%= link_post 'Logout', logout_path, confirm: 'Are you sure you want to logout?' %>
 <% end %>
 
 <%= form_with url: twofa_update_url do |f| %>

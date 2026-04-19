@@ -69,4 +69,22 @@ module Authenticatable
       false
     end
   end
+
+  def require_2fa_for_privileged
+    return true unless @user
+    return true unless @user.is_admin? || @user.is_moderator?
+    return true if @user.has_2fa?
+    return true if twofa_setup_path?
+
+    flash[:error] = "Two-factor authentication is required for moderators " \
+      "and administrators. Please enroll to continue."
+    redirect_to twofa_url
+  end
+
+  private
+
+  def twofa_setup_path?
+    (controller_name == "settings" && action_name.start_with?("twofa")) ||
+      (controller_name == "login" && action_name == "logout")
+  end
 end

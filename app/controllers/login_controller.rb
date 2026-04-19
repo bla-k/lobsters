@@ -74,7 +74,7 @@ class LoginController < ApplicationController
         user.save!
       end
 
-      if user.has_2fa? && !Rails.env.development?
+      if user.has_2fa?
         session[:twofa_u] = user.session_token
         return redirect_to "/login/2fa"
       end
