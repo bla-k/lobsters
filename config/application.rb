@@ -107,15 +107,15 @@ class << Rails.application
   end
 
   def domain
-    "hackt.news"
+    "lobste.rs"
   end
 
   def name
-    "hackt.news"
+    "Lobsters"
   end
 
   def og_description
-    "Hackt News is the community news aggregator for HACKT — The Hacklab of Catania."
+    "A computing-focused community centered around link aggregation and discussion."
   end
 
   # to force everyone to be considered logged-out (without destroying
