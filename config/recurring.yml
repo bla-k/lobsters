@@ -41,6 +41,9 @@ production:
   fetch_iana_tlds:
     class: FetchIanaTldsJob
     schedule: every 1 month
+  fill_story_text_cache:
+    class: FillStoryTextCacheJob
+    schedule: every 5 minutes
 
 development:
   clear_finished_jobs:
