@@ -8,7 +8,15 @@ x-app-env: &app-env
   DATABASE_NAME: lobsters
   SECRET_KEY_BASE: ${SECRET_KEY_BASE:?required}
   RAILS_MASTER_KEY: ${RAILS_MASTER_KEY:?required}
-  RAILS_LOG_TO_STDOUT: "true"
+  SMTP_ADDRESS: ${SMTP_ADDRESS:?required}
+  SMTP_PORT: ${SMTP_PORT:?required}
+  SMTP_USER_NAME: ${SMTP_USER_NAME:?required}
+  SMTP_PASSWORD: ${SMTP_PASSWORD:?required}
+  SMTP_DOMAIN: ${SMTP_DOMAIN:-}
+  SMTP_AUTHENTICATION: ${SMTP_AUTHENTICATION:-}
+  SMTP_STARTTLS_AUTO: ${SMTP_STARTTLS_AUTO:-}
+  SMTP_OPEN_TIMEOUT: ${SMTP_OPEN_TIMEOUT:-}
+  SMTP_READ_TIMEOUT: ${SMTP_READ_TIMEOUT:-}
 
 x-app-common: &app-common
   image: lobsters-app:latest
