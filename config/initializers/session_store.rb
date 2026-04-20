@@ -4,7 +4,7 @@
 
 # match this in caddy config for bypassing the file cache
 Lobsters::Application.config.session_store :cookie_store,
-  key: "lobster_trap",
+  key: "hackt_session",
   expire_after: 1.month,
   httponly: true,
   # :same_site isn't :strict because users who navigate from email/mastodon/etc links get that first
