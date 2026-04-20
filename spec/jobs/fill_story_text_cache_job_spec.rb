@@ -43,7 +43,7 @@ RSpec.describe FillStoryTextCacheJob, type: :job do
       expect(Keystore.value_for(described_class::CURSOR_KEY)).to eq(old.id - 1)
     end
 
-    it "starts from Story.last when the cursor is unset" do
+    it "seeds and persists the cursor at Story.last when the cursor is unset" do
       earlier = create(:story)
       StoryText.create!(id: earlier.id, title: earlier.title, description: earlier.description, body: "seeded")
       later = create(:story)
@@ -52,6 +52,7 @@ RSpec.describe FillStoryTextCacheJob, type: :job do
 
       expect(StoryText.find(earlier.id).body).to eq("seeded")
       expect(StoryText.where(id: later.id)).not_to exist
+      expect(Keystore.value_for(described_class::CURSOR_KEY)).to eq(later.id)
     end
   end
 end

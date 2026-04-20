@@ -14,7 +14,9 @@ class FillStoryTextCacheJob < ApplicationJob
       .order(:id)
       .each do |s|
         StoryText.fill_cache!(s)
-        Keystore.put(CURSOR_KEY, s.id)
+        last_id = s.id
       end
+
+    Keystore.put(CURSOR_KEY, last_id)
   end
 end
