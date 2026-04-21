@@ -561,6 +561,11 @@ nav.morelink a[rel="next"]::after {
 	margin-right: 1rem;
 }
 
+.hackt-form-grid > span {
+	display: flex;
+	align-items: center;
+}
+
 .hackt-form-grid > input[type="text"],
 .hackt-form-grid > input[type="url"],
 .hackt-form-grid > input[type="email"],
