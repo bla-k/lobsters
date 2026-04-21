@@ -9,7 +9,7 @@
       <%= button_tag raw("Fetch&nbsp;Title"), :id => "story_fetch_title", :type => "button" %>
     </div>
 
-    <div class="actions url-updated">
+    <div class="hackt-form-grid__note actions url-updated">
       The URL above has been updated to use the
       <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel#canonical">canonical URL</a>
       given by the server.
@@ -23,14 +23,14 @@
     maxlength: Story.title_maximum_length
   %>
 
-  <div class="actions title-reminder">
+  <div class="hackt-form-grid__note actions title-reminder">
     Please remove extraneous components from titles such as the name of the
     site, blog, section, and author.
   </div>
 
   <%# TITLE received suggestions -%>
   <% if f.object.id && f.object.suggested_title_times.any? %>
-    <div class="actions suggestions">
+    <div class="hackt-form-grid__note actions suggestions">
       Users have suggested setting this story's title to:
       <% f.object.suggested_title_times.each do |st| %>
         <div><%= st.times %>: <%= st.title %></div>
@@ -43,7 +43,7 @@
 
   <%# TAGS received suggestions -%>
   <% if f.object.id && f.object.suggested_tagging_times.any? %>
-    <div class="actions suggestions">
+    <div class="hackt-form-grid__note actions suggestions">
       Users have suggested setting this story's tags to:
       <% f.object.suggested_tagging_times.includes(:tag).each do |st| %>
         <div><%= st.times %>: <%= tag_link(st.tag) %></div>
@@ -64,7 +64,7 @@ See the guidelines below for more."
 
   <%# Markdown formatting guide -%>
   <%= render :partial => "global/markdownhelp",
-    :locals => { allow_images: @story.can_have_images? }
+    :locals => { allow_images: @story.can_have_images?, class_name: "hackt-form-grid__note" }
   %>
 
   <%# AUTHOR checkbox -%>
@@ -78,7 +78,7 @@ See the guidelines below for more."
     %>
   </div>
 
-  <div class="actions self-promo-warning">
+  <div class="hackt-form-grid__note actions self-promo-warning">
     If you're new here, please review the <a
       href="/about#self-promo">self-promo guideline</a>.
   </div>
@@ -94,7 +94,7 @@ See the guidelines below for more."
   </div>
 
   <%# Story submission guide -%>
-  <%= tag.details class: "actions submission-guidelines", open: show_guidelines?(@user) ? true : nil do %>
+  <%= tag.details class: "hackt-form-grid__note actions submission-guidelines", open: show_guidelines?(@user) ? true : nil do %>
     <summary>Story submission guidelines</summary>
     <ul>
       <li>

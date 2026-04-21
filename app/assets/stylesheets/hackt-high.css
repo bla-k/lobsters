@@ -544,12 +544,7 @@ nav.morelink a[rel="next"]::after {
 	grid-template-columns: max-content 1fr;
 }
 
-.hackt-form-grid .submission-guidelines,
-.hackt-form-grid .markdown_help,
-.hackt-form-grid .self-promo-warning,
-.hackt-form-grid .suggestions,
-.hackt-form-grid .url-updated,
-.hackt-form-grid .title-reminder {
+.hackt-form-grid__note {
 	grid-column: 2;
 }
 
@@ -649,12 +644,7 @@ nav.morelink a[rel="next"]::after {
 		grid-template-columns: 1fr;
 	}
 
-	.hackt-form-grid .submission-guidelines,
-	.hackt-form-grid .markdown_help,
-	.hackt-form-grid .self-promo-warning,
-	.hackt-form-grid .suggestions,
-	.hackt-form-grid .url-updated,
-	.hackt-form-grid .title-reminder {
+	.hackt-form-grid__note {
 		grid-column: 1;
 	}
 
