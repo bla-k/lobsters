@@ -1,0 +1,18 @@
+<%# locals: (story:, f:) -%>
+
+<div class="hackt-form-grid">
+  <%# TITLE -%>
+  <%= f.label :title, "Title" %>
+  <%= f.text_field :title,
+    required: true,
+    maxlength: Story.title_maximum_length
+  %>
+
+  <div class="actions title-reminder">
+    Please remove extraneous components from titles such as the name of the
+    site, blog, section, and author.
+  </div>
+
+  <%# TAGS -%>
+  <%= render "stories/form_tags_field", f: f %>
+</div>

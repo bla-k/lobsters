@@ -247,10 +247,6 @@ export class _LobstersFunction {
     if (title.match(/: | - | – | — | \| | · | • | by /) ||
        (title.match(/\([^\)]*\)/g) || []).some(function (p) { return !p.match(/\(\d{4}\)/) })) {
           slideDownJS(qS('.title-reminder'));
-
-    // else if the title doesn't contain concerns and reminder is visible
-    } else if (qS('.title-reminder').classList.contains('slide-down')) {
-      qS('.title-reminder-thanks').style.display = 'inline';
     }
   }
 

@@ -144,7 +144,6 @@ textarea {
 	font: inherit;
 	background-color: var(--color-box-bg);
 	padding: 3px 5px;
-	margin: var(--input-outline-width);
 }
 input:focus,
 button:focus,
@@ -165,9 +164,6 @@ input[type="number"],
 input[type="url"],
 textarea {
 	border: 1px solid var(--color-box-border);
-}
-input[type="checkbox"] {
-	margin-top: 0.5em;
 }
 textarea::placeholder {
 	color: var(--color-fg-contrast-7-5);
@@ -839,7 +835,7 @@ div.comment_text {
 	justify-content: start;
 	margin-top: 1rem;
 }
-.controls .buttons, .controls .hats, .controls .markdown_help summary {
+.controls .buttons, .controls .hats {
 	height: var(--comment-controls-height);
 }
 
@@ -852,9 +848,12 @@ div.story_text blockquote {
 	border-left: 2px solid var(--color-fg-contrast-5);
 }
 
+.markdown_help blockquote {
+	margin: 0;
+}
+
 /* un-italicize italics inside a blockquote */
 div.comment_text blockquote em,
-.markdown_help blockquote em,
 div.story_text blockquote em {
 	font-style: normal
 }
@@ -862,8 +861,7 @@ div.story_text blockquote em {
 div#collapsed_story_text div.story_text blockquote {
 	font-style: normal;
 }
-div.comment_text pre,
-.markdown_help pre {
+div.comment_text pre {
 	margin-left: 1em;
 }
 div.comment_text ol {
@@ -962,29 +960,12 @@ label.caches {
 .controls details {
 	margin-left: auto;
 }
-.markdown_help summary {
-	color: var(--color-fg-contrast-4-5);
-	text-align: right;
-}
-.controls .markdown_help[open] summary {
-	margin-top: calc(var(--comment-controls-height) * -1);
-}
 
 div#story_preview {
 	margin-top: 2em;
 	margin-left: 3.5em;
 }
 
-div#story_box input#story_url {
-	width: 512px;
-}
-div#story_box button#story_fetch_title {
-	height: 27px;
-	padding-top: 1px;
-	padding-bottom: 1px;
-	width: 84px;
-}
-div#story_box input#story_title,
 div#story_box input#story_moderation_reason,
 div#story_box input#story_merge_story_short_id,
 div#domain_box input[type=text] {
@@ -992,7 +973,6 @@ div#domain_box input[type=text] {
 }
 #story_box .url-updated,
 #story_box .title-reminder,
-#story_box .title-reminder-thanks,
 #story_box .self-promo-warning
 {
 	display: none;
@@ -1008,10 +988,6 @@ div#story_box #story_tags {
 	width: 624px;
 	height: 2rem;
 }
-div#story_box textarea {
-	width: 600px;
-}
-
 
 div.comment_form_container form {
 	margin-left: 40px;
@@ -1201,12 +1177,6 @@ table.moderations tr > td:nth-child(1) {
 
 /* boxes */
 
-.box label {
-	display: block;
-	float: left;
-	margin-bottom: 4px;
-}
-
 label:has(+ *:required)::after,
 label:has(+ *:not(label) *:required)::after,
 label:has(+ *[type="hidden"] + *:required)::after {
@@ -1221,7 +1191,6 @@ label:has(+ *[type="hidden"] + *:required)::after {
 .box img {
 	vertical-align: middle;
 }
-.box label,
 .box > span,
 .box select,
 .box br {
@@ -1243,11 +1212,6 @@ label:has(+ *[type="hidden"] + *:required)::after {
 	width: 75%;
 }
 
-.box label {
-	width: 7em;
-	line-height: 2em;
-	vertical-align: middle;
-}
 .box div.d {
 	margin-left: 7em;
 }
@@ -1493,7 +1457,7 @@ div.user-stats h2 {
 	padding: 0;
 	position: relative;
 	overflow-x: hidden;
-	overflow-y: scroll;
+	overflow-y: auto;
 }
 
 #story_holder .ts-dropdown .option {
@@ -1651,18 +1615,9 @@ input[type="submit"].link_post.pushover_button {
 		margin-top: 2em;
 	}
 
-
-	div#story_box .actions {
-		margin-left: 7em;
-		width: 610px;
-	}
 	#story_holder .ts-control {
 		display: inline-block;
 		width: 611px;
-	}
-
-	#story_box .markdown_help summary {
-		width: calc(7em + 610px);
 	}
 }
 
@@ -1857,7 +1812,6 @@ input[type="submit"].link_post.pushover_button {
 		float: none;
 	}
 
-	div.box label,
 	div.boxline label {
 		display: block;
 		width: 100% !important;
