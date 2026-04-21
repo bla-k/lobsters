@@ -6,12 +6,12 @@
   </p>
 <% else %>
   <%= form_with url: login_path do |form| %>
-    <div class="labelled_grid">
+    <div class="hackt-form-grid">
       <%= form.label :email, "E-mail or Username" %>
-      <%= form.text_field :email, size: 40, inputmode: :email, autofocus: :autofocus, autocapitalize: :off %>
+      <%= form.text_field :email, inputmode: :email, autofocus: :autofocus, autocapitalize: :off %>
 
       <%= form.label :password, "Password" %>
-      <%= form.password_field :password, :size => 30 %>
+      <%= form.password_field :password %>
     </div>
     <%= form.submit "Login" %>
 

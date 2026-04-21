@@ -609,6 +609,11 @@ nav.morelink a[rel="next"]::after {
 	outline: none;
 }
 
+.hackt-form-grid + input[type="submit"],
+.hackt-form-grid + button[type="submit"] {
+	margin-block-start: 1rem;
+}
+
 .markdown_help__grid {
 	display: grid;
 	grid-template-columns: max-content 1fr;
