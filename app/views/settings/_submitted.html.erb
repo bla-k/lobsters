@@ -1,0 +1,11 @@
+<%# locals: (f:) -%>
+<section>
+  <h2>Submitted Story Comment Settings</h2>
+
+  <div class="labelled_grid">
+    <%= f.label :show_submitted_story_threads,
+      raw("Show in <a href=\"/threads\">Your Threads</a>"),
+      class: "for_checkbox" %>
+    <span><%= f.check_box :show_submitted_story_threads %></span>
+  </div>
+</section>

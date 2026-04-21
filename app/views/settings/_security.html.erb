@@ -1,0 +1,26 @@
+<%# locals: (f:) -%>
+<section>
+  <h2>Security Settings</h2>
+
+  <div class="labelled_grid">
+    <%= f.label :current_password, "Current Password" %>
+    <%= f.password_field :current_password, name: "current_password", autocomplete: "off" %>
+
+    <%= f.label :password, "New Password" %>
+    <%= f.password_field :password, autocomplete: "off" %>
+
+    <%= f.label :password_confirmation, "Confirm Password" %>
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+
+    <%= f.label :twofa, "Two-Factor Auth" %>
+    <span>
+    <% if @edit_user.totp_secret.present? %>
+      <span style="color: green; font-weight: bold;">
+        Enabled
+      </span> (<a href="/settings/2fa">Disable</a>)
+    <% else %>
+      Disabled (<a href="/settings/2fa">Enroll</a>)
+    <% end %>
+    </span>
+  </div>
+</section>

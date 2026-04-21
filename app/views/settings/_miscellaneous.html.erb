@@ -1,0 +1,24 @@
+<%# locals: (f:) -%>
+<section>
+  <h2>Miscellaneous Settings</h2>
+    <fieldset class="radio-group-container grid-fieldset">
+      <legend>Contrast</legend>
+      <div class="radio-group">
+        <label><%= f.radio_button :prefers_contrast, :system %> System</label>
+        <label><%= f.radio_button :prefers_contrast, :normal %> Normal</label>
+        <label><%= f.radio_button :prefers_contrast, :high %> High</label>
+      </div>
+    </fieldset>
+
+  <div class="labelled_grid">
+    <%= f.label :show_story_previews, "Show Story Previews",
+      class: "for_checkbox" %>
+    <span><%= f.check_box :show_story_previews %></span>
+
+    <%= f.label :show_avatars, "Show User Avatars", class: "for_checkbox" %>
+    <span><%= f.check_box :show_avatars %></span>
+  </div>
+
+  <br><br>
+  <%= f.submit "Save Account Settings" %>
+</section>

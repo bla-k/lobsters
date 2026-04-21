@@ -1,0 +1,52 @@
+<section>
+  <h2 name="external">External Accounts</h2>
+
+  <div class="labelled_grid">
+    <%= label_tag :gravatar,
+      raw("<a href=\"https://gravatar.com/\">Gravatar</a>") %>
+    <span>
+      Your avatar will be cached from the Gravatar icon for your e-mail address above.
+      <%= link_post "Expire cache", "/avatars/expire" %>
+    </span>
+    <% if Pushover.enabled? %>
+      <%= label_tag :pushover_user_key,
+          raw("<a href=\"https://pushover.net/\">Pushover</a>") %>
+      <span>
+        <%= link_post((@edit_user.pushover_user_key.present? ?
+            "Manage Pushover Subscription" : "Subscribe With Pushover"),
+            "/settings/pushover_auth", class_name: "pushover_button") %>
+        <div class="hint">
+          For optional comment and message notifications above
+        </div>
+      </span>
+    <% end %>
+    <% if Github.enabled? %>
+      <%= label_tag :github_username,
+        raw("<a href=\"https://github.com/\">GitHub</a>") %>
+      <span>
+        <% if @edit_user.github_username.present? %>
+          Linked to
+          <strong><a href="https://github.com/<%= h(@edit_user.github_username)
+            %>"><%= h(@edit_user.github_username) %></a></strong>
+            <%= link_post "Disconnect", "/settings/github_disconnect" %>
+        <% else %>
+          <a href="/settings/github_auth">Connect</a>
+        <% end %>
+      </span>
+      <% end %>
+    <% if Mastodon.enabled? %>
+      <%= label_tag :mastodon_username,
+        raw("<a href=\"https://joinmastodon.org/\">Mastodon</a>") %>
+      <span>
+        <% if @edit_user.mastodon_username.present? %>
+          Linked to
+          <strong><a href="https://<%= @edit_user.mastodon_instance %>/@<%= h(@edit_user.mastodon_username)
+            %>">@<%= h(@edit_user.mastodon_username) %>@<%=@edit_user.mastodon_instance%></a></strong>
+            <%= link_post "Disconnect", "/settings/mastodon_disconnect" %>
+        <% else %>
+          <a href="/settings/mastodon_authentication">Connect</a>
+        <% end %>
+      </span>
+    <% end %>
+  </div>
+</section>

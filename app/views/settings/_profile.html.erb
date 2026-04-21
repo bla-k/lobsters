@@ -1,0 +1,38 @@
+<%# locals: (f:) -%>
+<section>
+  <h2>Public Profile Information</h2>
+  <div class="labelled_grid">
+    <%= f.label :username, "Username" %>
+    <div>
+      <%= f.text_field :username, required: true, size: 15, autocapitalize: :off %>
+      <div class="hint">
+        Format: <tt><%= Username.username_regex_s %></tt><br>
+        Creates a <%= link_to 'modlog', moderations_path %> entry like "changed own username from '<%= @edit_user.username %>' to 'NewUsername'"
+      </div>
+    </div>
+
+    <%= f.label :email, "Email" %>
+    <div>
+    <%= f.email_field :email, required: true, inputmode: "email", autocapitalize: :off %>
+      <% if EmailBlocklistValidation.email_on_blocklist?(@edit_user.email) %>
+        <div class="hint">
+          We don't send email to disposable email domains; change your email address.
+        </div>
+      <% end %>
+    </div>
+
+    <%= f.label :homepage, "Homepage" %>
+    <span><%= f.url_field :homepage, autocapitalize: :off %>
+    <span class="hint">Link external accounts below</span>
+    </span>
+
+    <%= f.label :about, "About" %>
+    <div>
+      <%= f.text_area :about %>
+
+      <%= render :partial => "global/markdownhelp" %>
+    </div>
+  </div>
+
+  <%= f.submit "Save Account Settings" %>
+</section>
