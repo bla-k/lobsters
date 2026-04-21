@@ -2,11 +2,10 @@
 <section>
   <h2>Comment Reply Notification Settings</h2>
 
-  <div class="labelled_grid">
-    <%= f.label :email_replies, "Receive E-mail", class: "for_checkbox" %>
+  <div class="hackt-form-grid">
+    <%= f.label :email_replies, "Receive E-mail" %>
     <span><%= f.check_box :email_replies %></span>
-    <%= f.label :pushover_replies, "Receive Pushover Alert",
-      class: "for_checkbox" %>
+    <%= f.label :pushover_replies, "Receive Pushover Alert" %>
     <span>
       <%= f.check_box :pushover_replies %>
       <span class="hint">

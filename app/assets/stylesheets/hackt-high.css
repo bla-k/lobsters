@@ -557,6 +557,7 @@ nav.morelink a[rel="next"]::after {
 .hackt-form-grid > label {
 	align-items: center;
 	display: flex;
+	gap: 0.25rem;
 	margin-right: 1rem;
 	padding: 0 0.25rem;
 }

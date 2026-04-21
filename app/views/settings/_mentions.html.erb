@@ -2,13 +2,12 @@
 <section>
   <h2>Comment Mention Notification Settings</h2>
 
-  <div class="labelled_grid">
-    <%= f.label :inbox_mentions, "Show in Inbox", :class => "for_checkbox" %>
+  <div class="hackt-form-grid">
+    <%= f.label :inbox_mentions, "Show in Inbox" %>
     <span><%= f.check_box :inbox_mentions %></span>
-    <%= f.label :email_mentions, "Receive E-mail", :class => "for_checkbox" %>
+    <%= f.label :email_mentions, "Receive E-mail" %>
     <span><%= f.check_box :email_mentions %></span>
-    <%= f.label :pushover_mentions, "Receive Pushover Alert",
-      class: "for_checkbox" %>
+    <%= f.label :pushover_mentions, "Receive Pushover Alert" %>
     <span>
       <%= f.check_box :pushover_mentions %>
       <span class="hint">

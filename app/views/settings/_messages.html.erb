@@ -2,18 +2,17 @@
 <section>
   <h2>Private Message Notification Settings</h2>
 
-  <div class="labelled_grid">
-    <%= f.label :email_messages, "Receive E-mail", class: "for_checkbox" %>
+  <div class="hackt-form-grid">
+    <%= f.label :email_messages, "Receive E-mail" %>
     <span><%= f.check_box :email_messages %></span>
-    <%= f.label :modmail_messages, "Receive E-mail for ModMail", class: "for_checkbox" %>
+    <%= f.label :modmail_messages, "Receive E-mail for ModMail" %>
     <span>
-      <%= f.check_box :email_messages, { disabled: true, checked: true } %>
+      <%= f.check_box :modmail_messages, { disabled: true, checked: true } %>
       <span class="hint">
         Notifications from Moderators are mandatory
       </span>
     </span>
-    <%= f.label :pushover_messages, "Receive Pushover Alert",
-      class: "for_checkbox" %>
+    <%= f.label :pushover_messages, "Receive Pushover Alert" %>
     <span>
       <%= f.check_box :pushover_messages %>
       <span class="hint">
