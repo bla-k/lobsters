@@ -39,6 +39,10 @@
       :required => true
     %>
 
+    <% if @user %>
+      <%= render :partial => "global/markdownhelp" %>
+    <% end %>
+
     <div class="controls">
       <div class="buttons">
         <%= f.submit "#{comment.new_record?? "Post" : "Update"}", :class => "comment-post", :disabled => !@user %>
@@ -57,10 +61,6 @@
             options_from_collection_for_select(@user.wearable_hats, "short_id", "hat",
             comment.hat&.short_id), :include_blank => true %>
         </div>
-      <% end %>
-
-      <% if @user %>
-        <%= render :partial => "global/markdownhelp" %>
       <% end %>
     </div>
   </div>
