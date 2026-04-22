@@ -967,9 +967,6 @@ div#story_preview {
 
 div#story_box input#story_moderation_reason,
 div#story_box input#story_merge_story_short_id,
-div#domain_box input[type=text] {
-	width: 600px;
-}
 #story_box .url-updated,
 #story_box .title-reminder,
 #story_box .self-promo-warning
