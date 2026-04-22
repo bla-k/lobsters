@@ -35,6 +35,9 @@ module Lobsters
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
 
+    config.name = "Hackt News"
+    config.domain = "hackt.news"
+
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     config.time_zone = "Central Time (US & Canada)"
@@ -107,15 +110,15 @@ class << Rails.application
   end
 
   def domain
-    "lobste.rs"
+    Rails.application.config.domain
   end
 
   def name
-    "Lobsters"
+    Rails.application.config.name
   end
 
   def og_description
-    "A computing-focused community centered around link aggregation and discussion."
+    "Hackt News is the community news aggregator for HACKT - The Hacklab of Catania."
   end
 
   # to force everyone to be considered logged-out (without destroying
