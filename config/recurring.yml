@@ -47,6 +47,9 @@ production:
   expire_page_cache:
     class: ExpirePageCacheJob
     schedule: every 1 minute
+  mastodon_post:
+    class: MastodonPostJob
+    schedule: every 5 minutes
 
 development:
   clear_finished_jobs:
