@@ -1,5 +1,12 @@
 #!/usr/bin/env ruby
 
+# DEPRECATED on the hackt.news deployment.
+# Replaced by MailNewActivityJob (app/jobs/mail_new_activity_job.rb) + the
+# MailingListMailer (app/mailers/mailing_list_mailer.rb), scheduled in
+# config/recurring.yml. The job uses ActionMailer + SMTP rather than shelling
+# out to /usr/sbin/sendmail (which isn't installed in our container image).
+# Kept here for reference and for compatibility with upstream lobsters merges.
+
 require File.expand_path("../../config/environment", __FILE__)
 
 class String

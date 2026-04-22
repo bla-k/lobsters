@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# DEPRECATED on the hackt.news deployment.
+# The two scripts this used to background (mail_new_activity.rb and
+# mastodon_post.rb) have been ported to SolidQueue recurring jobs:
+#   - MailNewActivityJob  (app/jobs/mail_new_activity_job.rb)
+#   - MastodonPostJob     (app/jobs/mastodon_post_job.rb)
+# Both are scheduled in config/recurring.yml. Kept here for reference and for
+# compatibility with upstream lobsters merges; do not invoke from our crontab.
+
 err=0
 report() {
   err=1

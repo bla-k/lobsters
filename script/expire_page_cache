@@ -1,3 +1,8 @@
 #!/bin/sh
 
+# DEPRECATED on the hackt.news deployment.
+# Replaced by ExpirePageCacheJob (app/jobs/expire_page_cache_job.rb), scheduled
+# in config/recurring.yml under SolidQueue. Kept here for reference and for
+# compatibility with upstream lobsters merges; do not invoke from our crontab.
+
 find /home/deploy/lobsters/current/public/cache/ -type f -not -mmin 5 -delete

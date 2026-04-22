@@ -1,5 +1,10 @@
 #!/usr/bin/env ruby
 
+# DEPRECATED on the hackt.news deployment.
+# Replaced by MastodonPostJob (app/jobs/mastodon_post_job.rb), scheduled every
+# 5 minutes in config/recurring.yml. Kept here for reference and for
+# compatibility with upstream lobsters merges; do not invoke from our crontab.
+
 ENV["RAILS_ENV"] ||= "production"
 
 require File.expand_path("../../config/environment", __FILE__)
