@@ -15,7 +15,7 @@
 
 <% if @moderations.map(&:token).intersect? Moderation::BAD_DOFFING_ENTRIES  %>
   <p>
-    This table includes 1 or more entries where a user who doffed a hat was <a href="https://github.com/lobsters/lobsters/issues/1591">wrongly listed as a moderator</a>.
+    This table includes 1 or more entries where a user who doffed a hat was wrongly listed as a moderator.
     We don't want to edit or delete from the modlog, so we've annotated this display to explain the bad data.
   </p>
 <% end %>

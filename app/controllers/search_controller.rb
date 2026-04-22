@@ -10,7 +10,7 @@ class SearchController < ApplicationController
     @search = Search.new(search_params, @user)
 
     if !@user && params[:q].to_s.starts_with?("https://")
-      flash[:error] = "Sorry, you have to log in to search for a URL. We're getting hammered by a spambot with many thousands of IPs. More info at https://github.com/lobsters/lobsters/issues/1814"
+      flash[:error] = "Sorry, you have to log in to search for a URL."
       @results = []
     else
       @results = @search.results
