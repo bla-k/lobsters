@@ -10,13 +10,13 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    category = Category.create!(category_params)
-    if category.valid?
-      flash[:success] = "Category #{category.category} has been created"
+    @category = Category.new(category_params)
+    if @category.save
+      flash[:success] = "Category #{@category.category} has been created"
       redirect_to tags_path
     else
-      flash[:error] = "New category not created: #{category.errors.full_messages.join(", ")}"
-      redirect_to new_category_path
+      flash[:error] = "New category not created: #{@category.errors.full_messages.join(", ")}"
+      render :new
     end
   end
 
@@ -27,13 +27,13 @@ class CategoriesController < ApplicationController
   end
 
   def update
-    category = Category.where(category: params[:category_name]).first!
-    if category.update(category_params)
-      flash[:success] = "Category #{category.category} has been updated"
+    @category = Category.where(category: params[:category_name]).first!
+    if @category.update(category_params)
+      flash[:success] = "Category #{@category.category} has been updated"
       redirect_to tags_path
     else
-      flash[:error] = "Category not updated: #{category.errors.full_messages.join(", ")}"
-      redirect_to edit_category_path
+      flash[:error] = "Category not updated: #{@category.errors.full_messages.join(", ")}"
+      render :edit
     end
   end
 
