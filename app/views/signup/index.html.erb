@@ -7,12 +7,7 @@
     <p>
     Signup is currently by invitation only to combat spam and increase
     accountability.  If you know <%= link_to 'a current user', users_tree_path %>
-    of the site, ask them for an invitation, or
-    <% if Rails.application.allow_invitation_requests? %>
-      <a href="/invitations/request">request one publicly</a>.
-    <% else %>
-      request one in <a href="/chat">chat</a>.
-    <% end %>
+    of the site, ask them for an invitation.
     </p>
   <% end %>
 </div>

@@ -10,9 +10,7 @@ check_daily = 2.weeks.ago
 top_score = Story.all.maximum("score")
 
 SitemapGenerator::Sitemap.create do
-  %w[/about /chat].each do |path|
-    add path, changefreq: "monthly", lastmod: nil
-  end
+  add "/about", changefreq: "monthly", lastmod: nil
 
   add recent_path, changefreq: "always", priority: 1
   add newest_path, changefreq: "always", priority: 1
