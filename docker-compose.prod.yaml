@@ -81,9 +81,9 @@ services:
       PIDFILE: /lobsters/tmp/puma.pid
     volumes:
       - storage_data:/lobsters/storage
+      - page_cache:/lobsters/public/cache
     tmpfs:
       - /lobsters/tmp:mode=1777,size=128m
-      - /lobsters/public/cache:mode=1777,size=64m
     deploy:
       resources:
         limits:
@@ -103,6 +103,7 @@ services:
       <<: *app-env
     volumes:
       - storage_data:/lobsters/storage
+      - page_cache:/lobsters/public/cache
     tmpfs:
       - /lobsters/tmp:mode=1777,size=128m
     deploy:
@@ -139,6 +140,7 @@ services:
 volumes:
   db_data:
   storage_data:
+  page_cache:
 
 networks:
   backend:
