@@ -12,15 +12,16 @@
   unique list address private to prevent others from posting comments as you.
   </p>
 
-  <div class="labelled_grid">
+  <div class="hackt-form-grid">
     <%= f.label :mailing_list_mode, "Receive List E-mails" %>
     <%= f.select :mailing_list_mode, [ [ "No e-mails", 0 ],
       [ "All stories and comments", 1 ], [ "Only stories", 2 ] ],
       required: true %>
     <label>List Address</label>
     <span>
-      <tt><%= Rails.application.shortname %>-<%=
-        @edit_user.mailing_list_token %>@<%= Rails.application.domain %></tt>
+      <code>
+        <%= Rails.application.shortname %>-<%=@edit_user.mailing_list_token %>@<%= Rails.application.domain %>
+      </code>
     </span>
   </div>
 </section>

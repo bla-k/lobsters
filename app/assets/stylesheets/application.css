@@ -234,7 +234,6 @@ input[type="submit"]:hover {
 
 select {
 	border: 1px solid var(--color-box-border);
-	margin-top: 3px;
 	min-width: 100px;
 }
 select::-moz-focus-inner {
