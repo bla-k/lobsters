@@ -577,8 +577,8 @@ nav.morelink a[rel="next"]::after {
 }
 
 .hackt-form-grid > span {
-	display: flex;
-	align-items: center;
+	align-self: center;
+	min-height: 0;
 }
 
 .hackt-form-grid > input[type="text"],
@@ -598,6 +598,12 @@ nav.morelink a[rel="next"]::after {
 .hackt-form-grid > input[type="radio"] {
 	justify-self: start;
 	width: auto;
+}
+
+.hackt-form-grid__content {
+	background: var(--surface-raised);
+	border: 1px solid var(--surface-elevated);
+	padding: 0.5rem 0.75rem;
 }
 
 .hackt-form-grid__group {

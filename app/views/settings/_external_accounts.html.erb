@@ -4,13 +4,11 @@
   <div class="hackt-form-grid">
     <%= label_tag :gravatar,
       raw("<a href=\"https://gravatar.com/\">Gravatar</a>") %>
-    <div class="hackt-form-grid__group">
-      <span>
-        Your avatar will be cached from the Gravatar icon for your e-mail
-        address above.
-      </span>
+    <span>
+      Your avatar will be cached from the Gravatar icon for your e-mail
+      address above.
       <%= link_post "Expire cache", "/avatars/expire" %>
-    </div>
+    </span>
 
     <% if Pushover.enabled? %>
       <%= label_tag :pushover_user_key,

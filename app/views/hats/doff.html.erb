@@ -1,18 +1,16 @@
 <%= form_with url: doff_by_user_hat_path(@hat) do |f| %>
-  <div class="labelled_grid">
+  <div class="hackt-form-grid">
     <%= f.label :user_id, "User" %>
-    <%= styled_user_link @hat.user %>
+    <span><%= styled_user_link @hat.user %></span>
 
     <%= f.label :hat, "Hat" %>
-    <%= styled_hat(@hat) %>
+    <span><%= styled_hat(@hat) %></span>
 
     <%= f.label :reason, "Reason" %>
-    <span>
-      <%= f.text_field :reason %>
-      <span class="hint">
-        Short public explanation, like "Left project"
-      </span>
-    </span>
+    <%= f.text_field :reason %>
+    <div class="hackt-form-grid__note hint">
+      Short public explanation, like "Left project"
+    </div>
   </div>
 
   <%= submit_tag "Doff Hat" %>

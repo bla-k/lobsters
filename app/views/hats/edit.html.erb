@@ -1,7 +1,7 @@
 <%= form_with model: @hat, url: update_in_place_hat_path(@hat), method: :post do |f| %>
-  <div class="labelled_grid">
+  <div class="hackt-form-grid">
     <%= f.label :user_id, "User" %>
-    <%= styled_user_link @hat.user %>
+    <span><%= styled_user_link @hat.user %></span>
 
     <%= f.label :hat, "Hat" %>
     <%= f.text_field :hat %>
@@ -10,8 +10,6 @@
     <%= f.text_field :link %>
   </div>
 
-  <div class="row">
-    <%= f.submit "Edit In-Place", formaction: update_in_place_hat_path(@hat) %>
-    <%= f.submit "Doff & Create", formaction: update_by_recreating_hat_path(@hat) %>
-  </div>
+  <%= f.submit "Edit In-Place", formaction: update_in_place_hat_path(@hat) %>
+  <%= f.submit "Doff & Create", formaction: update_by_recreating_hat_path(@hat) %>
 <% end %>

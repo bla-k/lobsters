@@ -12,7 +12,7 @@ shown to any other users (except moderators).
 </p>
 
 <%= form_with model: @invitation_request, url: create_invitation_by_request_path do |f| %>
-  <div class="labelled_grid">
+  <div class="hackt-form-grid">
     <%= f.label :name, "Name (not username)" %>
     <%= f.text_field :name %>
 
@@ -20,9 +20,9 @@ shown to any other users (except moderators).
     <%= f.email_field :email, inputmode: :email, autocapitalize: :off %>
 
     <%= f.label :memo, "URL" %>
-    <div>
-      <%= f.text_field :memo, autocapitalize: :off %>
-      <span class="hint">URL to verify you (Personal website, GitHub account, etc.)</span>
+    <%= f.text_field :memo, autocapitalize: :off %>
+    <div class="hackt-form-grid__note hint">
+      URL to verify you (Personal website, GitHub account, etc.)
     </div>
   </div>
 

@@ -13,7 +13,7 @@
     </div>
   <% end %>
 
-  <div class="labelled_grid">
+  <div class="hackt-form-grid">
   <label>Status</label>
   <span>
     <% if @showing_user.is_banned? %>
@@ -166,7 +166,7 @@
 <% if @user && @user.is_moderator? && !@showing_user.is_moderator? %>
   <h2>Moderator Information</h2>
 
-  <section class="labelled_grid profile">
+  <section class="hackt-form-grid profile">
     <label>Flagged (1m)</label>
     <span>
       <% if (stats = FlaggedCommenters.new('1m').check_list_for(@showing_user)) %>
@@ -193,7 +193,7 @@
     <%= form_with model: @mod_note, method: :post do |f| %>
       <%= errors_for @mod_note %>
       <%= f.hidden_field :username %>
-      <div class="labelled_grid">
+      <div class="hackt-form-grid">
         <%= f.label :note, "New Note" %>
         <%= f.text_area :note, required: true, rows: 5 %>
       </div>
@@ -227,9 +227,9 @@
         <%= form_with url: user_unban_path, method: :post do |f| %>
           <p>
             <% if @showing_user.is_banned? %>
-              <div class="labelled_grid">
+              <div class="hackt-form-grid">
                 <%= f.label :reason, "Reason" %>
-                <%= f.text_field :reason, required: true, size: 80 %>
+                <%= f.text_field :reason, required: true %>
               </div>
               <%= f.submit "Unban" %>
             <% end %>
@@ -246,7 +246,7 @@
           with your e-mail address as the Reply-To so the user can respond.
         </p>
         <%= form_with url: user_ban_path, method: :post do |f| %>
-          <div class="labelled_grid">
+          <div class="hackt-form-grid">
             <%= f.label :reason, "Reason" %>
             <%= f.text_field :reason, required: true %>
           </div>
