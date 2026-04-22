@@ -1,6 +1,6 @@
 <%# locals: (category:) -%>
 <%= form_with model: category, url: category.persisted? ? update_category_path : categories_path, method: :post do |f| %>
-  <div class="labelled_grid">
+  <div class="hackt-form-grid">
     <%= f.label :category, 'Name' %>
     <%= f.text_field :category, required: true, autocapitalize: :off %>
   </div>
