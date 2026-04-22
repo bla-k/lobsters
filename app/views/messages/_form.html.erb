@@ -2,7 +2,7 @@
 <%= form_with model: new_message, url: new_message, method: :post do |f| %>
   <%= errors_for new_message %>
 
-  <div class="labelled_grid">
+  <div class="hackt-form-grid">
     <% if replying %>
         <%= f.hidden_field :recipient_username  %>
     <% else %>
@@ -22,8 +22,8 @@
         @user.wearable_hats.map{|h| [h.hat, { 'data-modnote' => h.modlog_use }, h.short_id] }
       ) %>
       <% if @user.is_moderator? %>
-        <%= f.label :mod_note, 'ModNote 🔑', class: 'normal for_checkbox' %>
-        <%= f.check_box 'mod_note', class: 'normal' %>
+        <%= f.label :mod_note, 'ModNote 🔑', class: 'normal' %>
+        <span><%= f.check_box 'mod_note', class: 'normal' %></span>
       <% end %>
     <% end %>
   </div>

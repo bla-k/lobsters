@@ -261,6 +261,16 @@ textarea:focus {
 	outline: var(--input-outline-width) solid var(--accent);
 }
 
+input[type="checkbox"],
+input[type="radio"] {
+	outline: none;
+}
+
+input[type="checkbox"]:focus-visible,
+input[type="radio"]:focus-visible {
+	outline: var(--input-outline-width) solid var(--accent);
+}
+
 .markdown_help,
 .markdown_help summary {
 	color: var(--text-muted);
@@ -341,6 +351,10 @@ li .domain:hover {
 li .byline {
 	color: var(--text-muted);
 	font-size: var(--font-size-small);
+}
+
+table + input {
+	margin-top: 1rem;
 }
 
 .byline a,
