@@ -1,16 +1,20 @@
 <%# locals: (f:) -%>
 <section>
-  <h2>Comment Reply Notification Settings</h2>
+  <h3>Comment Reply Notifications</h3>
 
-  <div class="hackt-form-grid">
-    <%= f.label :email_replies, "Receive E-mail" %>
+  <div class="hackt-form-grid hackt-form-grid--inline">
     <span><%= f.check_box :email_replies %></span>
-    <%= f.label :pushover_replies, "Receive Pushover Alert" %>
-    <span>
-      <%= f.check_box :pushover_replies %>
-      <span class="hint">
-        Requires Pushover subscription below
+    <%= f.label :email_replies, "E-mail" %>
+
+    <% if Pushover.enabled? %>
+      <span>
+        <%= f.check_box :pushover_replies %>
+        <span class="hint">
+          * Requires Pushover subscription below
+        </span>
       </span>
-    </span>
+      <%= f.label :pushover_replies, "Pushover Alert" %>
+    <% end %>
+
   </div>
 </section>

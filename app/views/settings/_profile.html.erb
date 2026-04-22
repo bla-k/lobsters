@@ -1,6 +1,7 @@
 <%# locals: (f:) -%>
 <section>
-  <h2>Public Profile Information</h2>
+  <h3>Public Profile Information</h3>
+
   <div class="hackt-form-grid">
     <%= f.label :username, "Username" %>
     <%= f.text_field :username, required: true, autocapitalize: :off %>
@@ -27,6 +28,4 @@
     <%= f.text_area :about %>
     <%= render :partial => "global/markdownhelp", :locals => { class_name: "hackt-form-grid__note" } %>
   </div>
-
-  <%= f.submit "Save Account Settings" %>
 </section>

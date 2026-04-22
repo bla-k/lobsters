@@ -1,6 +1,6 @@
 <%# locals: (f:) -%>
 <section>
-  <h2>Security Settings</h2>
+  <h3>Password and Authentication</h3>
 
   <div class="hackt-form-grid">
     <%= f.label :current_password, "Current Password" %>
@@ -14,13 +14,13 @@
 
     <%= f.label :twofa, "Two-Factor Auth" %>
     <span>
-    <% if @edit_user.totp_secret.present? %>
-      <span style="color: green; font-weight: bold;">
-        Enabled
-      </span> (<a href="/settings/2fa">Disable</a>)
-    <% else %>
-      Disabled (<a href="/settings/2fa">Enroll</a>)
-    <% end %>
+      <% if @edit_user.totp_secret.present? %>
+        <span style="color: green; font-weight: bold;">
+          Enabled
+        </span> (<a href="/settings/2fa">Disable</a>)
+      <% else %>
+        Disabled (<a href="/settings/2fa">Enroll</a>)
+      <% end %>
     </span>
   </div>
 </section>

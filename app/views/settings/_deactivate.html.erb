@@ -20,10 +20,13 @@
     <div class="hackt-form-grid">
       <%= f.label :password, "Verify Password" %>
       <%= f.password_field :password, required: true, autocomplete: "off" %>
-      <%= f.label :i_am_sure, "I am sure" %>
+    </div>
+    <div class="hackt-form-grid hackt-form-grid--inline">
       <span><%= f.check_box :i_am_sure, required: true %></span>
+      <%= f.label :i_am_sure, "I am sure" %>
+
+      <span><%= f.check_box :disown %></span>
       <%= f.label :disown, "Disown stories/comments" %>
-      <span><%= f.check_box :disown %> <span class="hint">(optional)</span></span>
     </div>
 
     <%= f.submit "Yes, Deactivate My Account", :class => "deletion" %>

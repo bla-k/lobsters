@@ -1,10 +1,10 @@
 <%# locals: (f:) -%>
 <section>
-  <h2>Submitted Story Comment Settings</h2>
+  <h3>Submitted Story Comment</h3>
 
-  <div class="hackt-form-grid">
+  <div class="hackt-form-grid hackt-form-grid--inline">
+    <span><%= f.check_box :show_submitted_story_threads %></span>
     <%= f.label :show_submitted_story_threads,
       raw("Show in <a href=\"/threads\">Your Threads</a>") %>
-    <span><%= f.check_box :show_submitted_story_threads %></span>
   </div>
 </section>

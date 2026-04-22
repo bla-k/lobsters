@@ -271,6 +271,10 @@ input[type="radio"]:focus-visible {
 	outline: var(--input-outline-width) solid var(--accent);
 }
 
+section h2 {
+	color: var(--accent);
+}
+
 .markdown_help,
 .markdown_help summary {
 	color: var(--text-muted);
@@ -385,6 +389,11 @@ table + input {
 .hint {
 	color: var(--text-muted);
 	font-size: var(--font-size-medium);
+}
+
+span.hint {
+	align-self: center;
+	margin-left: 0.5rem;
 }
 
 .last_read_newest {
@@ -572,7 +581,7 @@ nav.morelink a[rel="next"]::after {
 	align-items: center;
 	display: flex;
 	gap: 0.25rem;
-	margin-right: 1rem;
+	margin-right: 0.5rem;
 	padding: 0 0.25rem;
 }
 
@@ -598,6 +607,10 @@ nav.morelink a[rel="next"]::after {
 .hackt-form-grid > input[type="radio"] {
 	justify-self: start;
 	width: auto;
+}
+
+.hackt-form-grid + .hackt-form-grid {
+	margin-top: 0.5rem;
 }
 
 .hackt-form-grid__content {
@@ -635,6 +648,7 @@ nav.morelink a[rel="next"]::after {
 	outline: none;
 }
 
+section + input[type="submit"],
 .hackt-form-grid + input[type="submit"],
 .hackt-form-grid + button[type="submit"] {
 	margin-block-start: 1rem;
@@ -676,8 +690,18 @@ nav.morelink a[rel="next"]::after {
 		grid-template-columns: 1fr;
 	}
 
+	.hackt-form-grid--inline {
+		gap: 0.5rem;
+		grid-template-columns: max-content 1fr;
+	}
+
 	.hackt-form-grid > label:not(:first-child) {
 		margin-top: 0.5rem;
+		margin-right: 0;
+	}
+
+	.hackt-form-grid--inline > label:not(:first-child) {
+		margin-top: 0;
 		margin-right: 0;
 	}
 

@@ -1,23 +1,19 @@
 <%# locals: (f:) -%>
 <section>
-  <h2>Private Message Notification Settings</h2>
+  <h3>Private Message Notifications</h3>
 
-  <div class="hackt-form-grid">
-    <%= f.label :email_messages, "Receive E-mail" %>
+  <div class="hackt-form-grid hackt-form-grid--inline">
     <span><%= f.check_box :email_messages %></span>
-    <%= f.label :modmail_messages, "Receive E-mail for ModMail" %>
-    <span>
-      <%= f.check_box :modmail_messages, { disabled: true, checked: true } %>
-      <span class="hint">
-        Notifications from Moderators are mandatory
+    <%= f.label :email_messages, "Receive E-mail" %>
+
+    <% if Pushover.enabled? %>
+      <span>
+        <%= f.check_box :pushover_messages %>
+        <span class="hint">
+          Requires Pushover subscription below
+        </span>
       </span>
-    </span>
-    <%= f.label :pushover_messages, "Receive Pushover Alert" %>
-    <span>
-      <%= f.check_box :pushover_messages %>
-      <span class="hint">
-        Requires Pushover subscription below
-      </span>
-    </span>
+      <%= f.label :pushover_messages, "Receive Pushover Alert" %>
+    <% end %>
   </div>
 </section>

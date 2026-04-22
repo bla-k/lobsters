@@ -1,18 +1,23 @@
 <%# locals: (f:) -%>
 <section>
-  <h2>Comment Mention Notification Settings</h2>
+  <h3>Comment Mention Notifications</h3>
 
-  <div class="hackt-form-grid">
-    <%= f.label :inbox_mentions, "Show in Inbox" %>
+  <div class="hackt-form-grid hackt-form-grid--inline">
     <span><%= f.check_box :inbox_mentions %></span>
-    <%= f.label :email_mentions, "Receive E-mail" %>
+    <%= f.label :inbox_mentions, "Hackt Inbox" %>
+
     <span><%= f.check_box :email_mentions %></span>
-    <%= f.label :pushover_mentions, "Receive Pushover Alert" %>
-    <span>
-      <%= f.check_box :pushover_mentions %>
-      <span class="hint">
-        Requires Pushover subscription below
+    <%= f.label :email_mentions, "E-mail" %>
+
+    <% if Pushover.enabled? %>
+      <span>
+        <%= f.check_box :pushover_mentions %>
+        <span class="hint">
+          * Requires Pushover subscription below
+        </span>
       </span>
-    </span>
+      <%= f.label :pushover_mentions, "Pushover Alert" %>
+    <% end %>
+
   </div>
 </section>

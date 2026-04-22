@@ -1,15 +1,13 @@
 <%# locals: (f:) -%>
 
 <section>
-  <h2>Miscellaneous Settings</h2>
+  <h3>Miscellaneous</h3>
 
-  <div class="hackt-form-grid">
-    <%= f.label :show_story_previews, "Show Story Previews" %>
+  <div class="hackt-form-grid hackt-form-grid--inline">
     <span><%= f.check_box :show_story_previews %></span>
+    <%= f.label :show_story_previews, "Show Story Previews" %>
 
-    <%= f.label :show_avatars, "Show User Avatars" %>
     <span><%= f.check_box :show_avatars %></span>
+    <%= f.label :show_avatars, "Show User Avatars" %>
   </div>
-
-  <%= f.submit "Save Account Settings" %>
 </section>

@@ -8,14 +8,21 @@
   <%= form_with model: @edit_user, url: settings_path, method: :post, id: 'edit_user', namespace: 'edit_user' do |f| %>
     <%= errors_for f.object %>
 
+    <h2>Account Settings</h2>
+
     <%= render "settings/profile", f: f %>
     <%= render "settings/security", f: f %>
+
     <%= render "settings/replies", f: f %>
     <%= render "settings/mentions", f: f %>
     <%= render "settings/messages", f: f %>
+
     <%= render "settings/submitted", f: f %>
+
     <%= render "settings/mailing_list", f: f %>
     <%= render "settings/miscellaneous", f: f %>
+
+    <%= f.submit "Save Account Settings" %>
   <% end %>
 </section>
 
