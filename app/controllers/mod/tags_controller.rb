@@ -10,12 +10,12 @@ class Mod::TagsController < Mod::ModController
 
   def create
     @title = "Create Tag"
-    tag = Tag.create(tag_params)
-    if tag.persisted?
-      flash[:success] = "Tag #{tag.tag} created"
-      redirect_to tag_path(tag)
+    @tag = Tag.new(tag_params)
+    if @tag.save
+      flash[:success] = "Tag #{@tag.tag} created"
+      redirect_to tag_path(@tag)
     else
-      flash[:error] = "New tag not created: #{tag.errors.full_messages.join(", ")}"
+      flash[:error] = "New tag not created: #{@tag.errors.full_messages.join(", ")}"
       render :new
     end
   end
@@ -26,13 +26,13 @@ class Mod::TagsController < Mod::ModController
   end
 
   def update
-    tag = Tag.where(tag: params[:id]).first!
-    if tag.update(tag_params)
-      flash[:success] = "Tag #{tag.tag} has been updated"
-      redirect_to tag_path(tag)
+    @tag = Tag.where(tag: params[:id]).first!
+    if @tag.update(tag_params)
+      flash[:success] = "Tag #{@tag.tag} has been updated"
+      redirect_to tag_path(@tag)
     else
-      flash[:error] = "Tag not updated: #{tag.errors.full_messages.join(", ")}"
-      redirect_to edit_mod_tag_path
+      flash[:error] = "Tag not updated: #{@tag.errors.full_messages.join(", ")}"
+      render :edit
     end
   end
 
