@@ -157,12 +157,6 @@ class User < ApplicationRecord
     length: {maximum: 16_777_215}
 
   scope :active, -> { where(banned_at: nil, deleted_at: nil) }
-  scope :moderators, -> {
-    where("
-      is_moderator = True OR
-      users.id IN (select distinct moderator_user_id from moderations where token not in (?))
-    ", Moderation::BAD_DOFFING_ENTRIES)
-  }
 
   before_save :check_session_token
   before_validation on: :create do
