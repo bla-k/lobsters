@@ -1,6 +1,6 @@
 # typed: false
 
-SitemapGenerator::Sitemap.default_host = "https://lobste.rs"
+SitemapGenerator::Sitemap.default_host = "https://#{Rails.application.domain}"
 
 # https://developers.google.com/search/blog/2023/06/sitemaps-lastmod-ping
 SitemapGenerator::Sitemap.search_engines = {}
