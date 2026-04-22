@@ -50,6 +50,9 @@ production:
   mastodon_post:
     class: MastodonPostJob
     schedule: every 5 minutes
+  mail_new_activity:
+    class: MailNewActivityJob
+    schedule: every 5 minutes
 
 development:
   clear_finished_jobs:

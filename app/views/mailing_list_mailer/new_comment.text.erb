@@ -1,0 +1,11 @@
+<%
+  com = @comment.comment.to_s
+  com_lines = com.split("\n")
+  # If the comment has hard line breaks at <80, it likely came from an email,
+  # so don't re-wrap it at something shorter.
+  width = (com_lines.length > 1 && com_lines.first.length < 80) ? 80 : MailingListMailer::EMAIL_WIDTH
+-%>
+<%= word_wrap(com, line_width: width) %>
+
+--
+Vote: <%= Routes.comment_short_id_url(@comment) %>

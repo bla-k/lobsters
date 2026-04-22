@@ -1,0 +1,13 @@
+<% if @story.description.present? -%>
+<%= word_wrap(@story.description.to_s, line_width: MailingListMailer::EMAIL_WIDTH) %>
+
+<% end -%>
+Vote: <%= Routes.story_short_id_url(@story) %>
+<% if @story.url.present? -%>
+
+Via: <%= @story.url %>
+<% StoryText.cached?(@story) do |text| -%>
+
+<%= word_wrap(text.to_s, line_width: MailingListMailer::EMAIL_WIDTH) %>
+<% end -%>
+<% end -%>
