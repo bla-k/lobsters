@@ -6,6 +6,15 @@ ORIGINS_IDENTIFIER = /(.+)(?=\.json|\.rss|$|\/)/ # match github.com/user but not
 Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
+  namespace :internal do
+    scope :bot, controller: "bot" do
+      get "/health", action: :health
+      get "/tags", action: :tags
+      get "/user_exists", action: :user_exists
+      post "/submit", action: :submit
+    end
+  end
+
   root to: "home#index",
     protocol: (Rails.application.config.force_ssl ? "https://" : "http://"),
     as: "root"

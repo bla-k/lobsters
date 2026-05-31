@@ -2,6 +2,9 @@ name: lobsters
 
 x-app-env: &app-env
   RAILS_ENV: production
+  HACKT_BOT_SECRET: ${HACKT_BOT_SECRET:?required}
+  CF_ACCESS_TEAM_DOMAIN: ${CF_ACCESS_TEAM_DOMAIN:?required}
+  CF_ACCESS_AUD: ${CF_ACCESS_AUD:?required}
   DATABASE_HOST: db
   DATABASE_USERNAME: lobsters
   DATABASE_PASSWORD: ${DB_PASSWORD:?required}
