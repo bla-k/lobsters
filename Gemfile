@@ -60,6 +60,9 @@ gem "silencer" # to disable default logging in prod
 # image
 gem "ruby-vips"
 
+# bot
+gem "jwt", "~> 2.7"
+
 group :test, :development do
   gem "active_record_doctor"
   gem "benchmark-perf"
